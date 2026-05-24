@@ -1,0 +1,14 @@
+# Claude config
+.claude/
+
+# Reference/design files (not needed for the website)
+Brand Asset.png
+Inspiration.png
+protected_cs_2x.png
+protected_cs_frame.png
+public_cs_2x.png
+public_cs_frame.png
+CLAUDE*.md
+
+# macOS
+.DS_Store

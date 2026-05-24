@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oana Serban — AI Product Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#f5f5f6',
+            base: '#e8e8ea',
+            cborder: '#d1d1d4',
+            muted: '#9b9ba0',
+            secondary: '#6e6e73',
+            charcoal: '#4a4a4f',
+            dark: '#38383d',
+            ctext: '#262626',
+            accent: '#FF2D78',
+          },
+          fontFamily: {
+            syne: ['Syne', 'sans-serif'],
+            dm: ['DM Sans', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: #262626;
+      -webkit-font-smoothing: antialiased;
+      background:
+        radial-gradient(ellipse 1000px 700px at 0% 0%, rgba(255,45,120,.04) 0%, transparent 65%),
+        radial-gradient(ellipse 800px 600px at 100% 90%, rgba(0,0,180,.03) 0%, transparent 65%),
+        #e8e8ea;
+    }
+
+    /* ── Pages ── */
+    .page { display: none; min-height: 100vh; }
+    .page.active { display: block; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page.active { animation: fadeUp .4s cubic-bezier(0.22,1,0.36,1) both; }
+
+    /* ── Floating nav (liquid glass) ── */
+    .fnav {
+      position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+      z-index: 100; display: flex; align-items: center; gap: 2px;
+      background: rgba(255,255,255,0.20);
+      border-radius: 100px; padding: 3px;
+      border: 1.5px solid rgba(255,255,255,0.65);
+      box-shadow:
+        0 0 6px rgba(0,0,0,.03),
+        0 2px 6px rgba(0,0,0,.08),
+        inset 3px 3px 0.5px -3px rgba(0,0,0,.9),
+        inset -3px -3px 0.5px -3px rgba(0,0,0,.85),
+        inset 1px 1px 1px -0.5px rgba(0,0,0,.6),
+        inset -1px -1px 1px -0.5px rgba(0,0,0,.6),
+        inset 0 0 6px 6px rgba(0,0,0,.12),
+        inset 0 0 2px 2px rgba(0,0,0,.06),
+        0 0 12px rgba(255,255,255,.15);
+      white-space: nowrap;
+      isolation: isolate;
+      overflow: hidden;
+    }
+    .fnav::before {
+      content: ''; position: absolute; inset: 0; border-radius: 100px;
+      backdrop-filter: blur(24px) saturate(180%) url(#nav-glass);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      z-index: -1; pointer-events: none;
+    }
+    .fnav-logo {
+      background: rgba(0,0,0,0.82); border-radius: 100px;
+      padding: 7px 15px; font-family: 'Syne', sans-serif;
+      font-size: 15px; font-weight: 700; color: #fff; cursor: pointer;
+      transition: background .2s; position: relative; z-index: 1;
+    }
+    .fnav-logo:hover { background: #FF2D78; }
+    .fnav-item {
+      padding: 7px 15px; border-radius: 100px;
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      color: #262626; cursor: pointer; border: none; background: transparent;
+      transition: background .2s, color .2s, transform .15s;
+      position: relative; z-index: 1;
+    }
+    .fnav-item:hover { background: rgba(0,0,0,.07); color: #000; }
+    .fnav-item:active { transform: scale(.96); }
+    .fnav-item.pink { color: #FF2D78; }
+    .fnav-item:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; }
+
+    /* ── Black metallic buttons ── */
+    .btn-metal {
+      position: relative; display: inline-flex; align-items: center;
+      justify-content: center; gap: 6px; cursor: pointer; border: none;
+      border-radius: 9px; padding: 1.5px; text-decoration: none;
+      background: linear-gradient(180deg, #1a1a1a 0%, #7a7a7a 100%);
+      box-shadow: 0 2px 8px rgba(0,0,0,.28), 0 1px 2px rgba(0,0,0,.2);
+      transition: transform 200ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 200ms;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .btn-metal-face {
+      display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+      padding: 9px 22px; border-radius: 8px;
+      background: linear-gradient(180deg, #383838 0%, #141414 100%);
+      color: #fff; font-size: 14px; font-weight: 500;
+      text-shadow: 0 1px 2px rgba(0,0,0,.5); white-space: nowrap;
+      transition: background 200ms;
+    }
+    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #484848 0%, #242424 100%); }
+    .btn-metal:hover { box-shadow: 0 4px 14px rgba(0,0,0,.32); }
+    .btn-metal:active { transform: translateY(2px) scale(.98); box-shadow: 0 1px 4px rgba(0,0,0,.25); }
+    .btn-metal:focus-visible { outline: 2px solid #FF2D78; outline-offset: 3px; }
+
+    /* ── Cards ── */
+    .card {
+      background: #f5f5f6; border-radius: 16px;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04), 0 4px 16px rgba(0,0,0,.05), 0 0 0 1px rgba(0,0,0,.04);
+    }
+
+    /* ── Divider ── */
+    .divider { height: 1px; background: #d1d1d4; }
+
+    /* ── Top-bar links ── */
+    .tlink {
+      font-family: 'DM Sans', sans-serif; font-size: 18px; color: #262626;
+      text-decoration: none; border-bottom: 1px solid transparent;
+      transition: border-color .2s; padding-bottom: 1px;
+    }
+    .tlink:hover { border-color: #262626; }
+    .tlink:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; border-radius: 2px; }
+
+    /* ── Experiment cards ── */
+    .exp-card {
+      cursor: pointer;
+      transition: transform .35s cubic-bezier(.22,1,.36,1), box-shadow .35s cubic-bezier(.22,1,.36,1);
+    }
+    .exp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 32px rgba(0,0,0,.09), 0 2px 8px rgba(255,45,120,.07), 0 0 0 1px rgba(0,0,0,.05);
+    }
+
+    /* ── Case study hero image ── */
+    .cs-img-wrap { position: relative; overflow: hidden; }
+    .cs-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .cs-img-wrap::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    /* ── Section images ── */
+    .section-img {
+      width: 100%; border-radius: 12px; display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,.1), 0 1px 4px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05);
+    }
+
+    /* ── Sidebar nav ── */
+    .snav-link {
+      display: block; font-family: 'DM Sans', sans-serif; font-size: 13px;
+      color: #6e6e73; padding: 5px 0 5px 14px; text-decoration: none;
+      border-left: 2px solid transparent;
+      transition: color .2s, border-color .2s;
+    }
+    .snav-link:hover { color: #262626; border-left-color: #d1d1d4; }
+    .snav-link.on { color: #FF2D78; border-left-color: #FF2D78; font-weight: 500; }
+
+    /* ── Callout ── */
+    .callout {
+      display: flex; gap: 10px; padding: 14px 16px;
+      background: rgba(255,45,120,.06); border-left: 3px solid #FF2D78;
+      border-radius: 0 8px 8px 0;
+      font-family: 'DM Sans', sans-serif; font-size: 15px; color: #38383d; line-height: 1.6;
+    }
+    .callout-icon { flex-shrink: 0; font-weight: 700; color: #FF2D78; }
+
+    /* ── Section label ── */
+    .slabel {
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: #6e6e73;
+    }
+
+    /* ── Password gate ── */
+    .pgate {
+      position: fixed; inset: 0; background: #e8e8ea; z-index: 200;
+      display: flex; align-items: center; justify-content: center; padding: 16px;
+    }
+    .pinput {
+      width: 100%; padding: 12px 16px; border-radius: 12px;
+      border: 1.5px solid #d1d1d4; background: #e8e8ea;
+      font-family: 'DM Sans', sans-serif; font-size: 16px; color: #262626;
+      transition: border-color .2s, box-shadow .2s; outline: none;
+    }
+    .pinput::placeholder { color: #9b9ba0; }
+    .pinput:focus { border-color: #FF2D78; box-shadow: 0 0 0 3px rgba(255,45,120,.1); }
+
+    /* ── Scroll-to-top ── */
+    .stt {
+      position: fixed; bottom: 28px; right: 28px; z-index: 99;
+      width: 42px; height: 42px; border-radius: 50%; background: #262626;
+      color: #fff; display: flex; align-items: center; justify-content: center;
+      border: none; cursor: pointer;
+      opacity: 0; transform: translateY(10px);
+      transition: opacity .3s, transform .3s cubic-bezier(.22,1,.36,1), background .2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,.18);
+    }
+    .stt.show { opacity: 1; transform: translateY(0); }
+    .stt:hover { background: #FF2D78; transform: translateY(-2px); }
+    .stt:active { transform: translateY(0); }
+
+    /* ── Badge two lines ── */
+    .badge-two-line {
+      display: inline-block;
+      background: #FF2D78; color: #fff;
+      font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
+      padding: 10px 18px; border-radius: 12px; line-height: 1.5;
+    }
+
+    /* ── Stat big ── */
+    .stat-big { font-family: 'Syne',sans-serif; font-size: 52px; font-weight: 700; color: #FF2D78; line-height: 1; }
+
+    @media (max-width: 640px) {
+      .fnav { width: calc(100% - 24px); justify-content: center; top: 12px; }
+      .fnav-item { padding: 6px 10px; font-size: 12px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- SVG filter: liquid glass refraction for nav -->
+<svg style="position:absolute;width:0;height:0;overflow:hidden;" aria-hidden="true">
+  <defs>
+    <filter id="nav-glass" x="-5%" y="-5%" width="110%" height="110%" color-interpolation-filters="sRGB">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9 0.9" numOctaves="2" seed="5" result="noise"/>
+      <feGaussianBlur in="noise" stdDeviation="0.5" result="smoothNoise"/>
+      <feDisplacementMap in="SourceGraphic" in2="smoothNoise" scale="5" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- FLOATING NAV -->
+<!-- ══════════════════════════════════════════════ -->
+<nav class="fnav" role="navigation" aria-label="Main navigation">
+  <div class="fnav-logo" onclick="navigate('home')" role="button" tabindex="0"
+       onkeydown="if(event.key==='Enter')navigate('home')">OS</div>
+  <button class="fnav-item" onclick="navTo('home','home-work')">AI PM Work</button>
+  <button class="fnav-item pink" onclick="navTo('home','home-notyet')">NOT YET</button>
+  <button class="fnav-item" onclick="navTo('home','about')">About</button>
+</nav>
+
+<!-- Scroll to top -->
+<button class="stt" id="sttBtn" aria-label="Back to top"
+        onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: HOME -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+    <span class="font-syne font-bold text-ctext" style="font-size:18px;">Oana Serban</span>
+    <div class="flex items-center gap-6">
+      <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+    </div>
+  </header>
+
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto">
+    <!-- Hero -->
+    <section class="pt-20 pb-16">
+      <h1 class="font-syne font-bold text-ctext leading-tight whitespace-nowrap" style="font-size:clamp(40px,5vw,72px);">
+        AI Product Manager
+      </h1>
+      <p class="mt-7 text-xl md:text-2xl text-ctext font-dm leading-relaxed max-w-2xl">
+        I take over broken systems, diagnose what's actually wrong, and redesign them to work in real operational environments.
+      </p>
+      <p class="mt-3 text-base md:text-lg text-secondary font-dm">
+        Based in Romania, working internationally · Open to remote opportunities and relocation within Europe
+      </p>
+      <div class="mt-8">
+        <div class="badge-two-line">
+          Designed by me.<br>Coded by Claude AI.
+        </div>
+      </div>
+    </section>
+
+    <div class="divider mb-16"></div>
+
+    <!-- Work / Case Study -->
+    <section id="home-work" class="mb-16">
+      <div class="mb-7">
+        <p class="slabel mb-1">Work</p>
+        <h2 class="font-syne text-2xl font-bold text-ctext">AI Product Manager</h2>
+      </div>
+      <div class="card overflow-hidden">
+        <div class="flex flex-col lg:flex-row">
+          <div class="lg:w-[48%] min-h-[300px] lg:min-h-[480px] cs-img-wrap">
+            <img
+              src="https://s3-alpha-sig.figma.com/img/8cd0/7d8c/81384dc7483171ea27bdf816a8307599?Expires=1780272000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mSsgKSBoTbMQx0rB4gDaPqQDjQCq55YMDtDxynfCiC~s59ZKX3kwKqopctNCQd5pB3IVYv-0AyxD7jfTx72MJbf4-I4mlGMy52wxvgz6FA08g0UeRGFLCevbCVV-tLi-ARMwxckakLJ5CW-u9gDt2F~rheQKdX6Okr2yJBgEZXK~uOBZxUglCX-hMRGB9MORKH8Nl2MNZtwqSirELwq19-YHkU-L1GysB8TRl58bVxEnyyxmzI9sn2i7N~sRz8arRb36mPojbDgRl~ZD1G9LmXp-6wwmr2NrbOJ5lKSN2NbQ4L00laX~GchXCi0PwfWFGLGY7R9MfLClOeIOsQy-Vg__"
+              alt="Counterfeit detection system"
+              style="min-height:300px;"
+              onerror="this.src='https://placehold.co/760x480/262626/6e6e73?text=Case+Study'"
+            >
+          </div>
+          <div class="lg:w-[52%] p-8 lg:p-14 flex flex-col justify-between">
+            <div>
+              <h3 class="font-syne text-3xl lg:text-4xl font-bold text-ctext leading-tight mb-8">
+                Building a reliable counterfeit detection system at scale
+              </h3>
+              <ul class="space-y-4">
+                <li class="flex items-center gap-3 font-dm text-lg text-dark">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Diagnosed 5 Root Causes
+                </li>
+                <li class="flex items-center gap-3 font-dm text-lg text-dark">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Designed 3 Parallel Solutions
+                </li>
+                <li class="flex items-center gap-3 font-dm text-lg text-dark">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Managed Organisational Complexity
+                </li>
+                <li class="flex items-center gap-3 font-dm text-lg text-dark">
+                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>€1.4B Protected Real Value
+                </li>
+              </ul>
+            </div>
+            <div class="flex flex-wrap gap-3 mt-10">
+              <button class="btn-metal" onclick="navigate('public-case-study')">
+                <span class="btn-metal-face">Public Case Study</span>
+              </button>
+              <button class="btn-metal" onclick="navigate('protected-case-study')">
+                <span class="btn-metal-face">Protected Case Study</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider mb-16"></div>
+
+    <!-- Not Yet / Experiments -->
+    <section id="home-notyet" class="mb-16">
+      <div class="mb-7">
+        <p class="slabel mb-1">Experiments (Field Reports)</p>
+        <h2 class="font-syne text-2xl font-bold text-ctext">Not Yet</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div class="card p-8 exp-card" onclick="navigate('not-yet-01')" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter')navigate('not-yet-01')">
+          <p class="slabel mb-4">Field Report #001</p>
+          <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
+            I built an AI Agent to check labelling compliance at work
+          </h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">
+            Reads emails, analyses designs, identifies issues, drafts responses.
+          </p>
+        </div>
+        <div class="card p-8 exp-card" onclick="navigate('not-yet-02')" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter')navigate('not-yet-02')">
+          <p class="slabel mb-4">Field Report #002</p>
+          <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
+            I track my spending with AI
+          </h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">
+            Upload bill photos, get categorised expenses, savings rate, and spending advice—no manual data entry required
+          </p>
+        </div>
+        <div class="card p-8 exp-card" onclick="navigate('not-yet-03')" role="button" tabindex="0"
+             onkeydown="if(event.key==='Enter')navigate('not-yet-03')">
+          <p class="slabel mb-4">Field Report #003</p>
+          <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
+            300 photos. One supplier code. Two AI tools
+          </h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">
+            Fast identification, but manual batching and file management ate the time savings. Learned: AI tools need folder access to truly scale.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider mb-16"></div>
+
+    <!-- About / Certs -->
+    <section id="about" class="mb-16">
+      <div class="mb-7">
+        <p class="slabel mb-1">About</p>
+        <h2 class="font-syne text-2xl font-bold text-ctext">Career &amp; Certifications</h2>
+      </div>
+      <div class="card p-8 lg:p-14">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
+          <div>
+            <p class="slabel mb-6">Certifications</p>
+            <div class="space-y-8">
+              <div class="pb-8 border-b border-cborder">
+                <h3 class="font-dm text-2xl font-medium text-ctext leading-snug">
+                  Certified Associate in Project Management CAPM®
+                </h3>
+                <p class="text-xl text-dark font-dm mt-1.5">Project Management Institute PMI®</p>
+              </div>
+              <div>
+                <h3 class="font-dm text-2xl font-medium text-ctext leading-snug">
+                  Master in UX/UI Design
+                </h3>
+                <p class="text-xl text-dark font-dm mt-1.5">Nuclio Digital School</p>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p class="slabel mb-6">Experience</p>
+            <div class="space-y-8">
+              <div class="pb-8 border-b border-cborder flex justify-between items-start gap-4">
+                <h3 class="font-dm text-2xl font-medium text-ctext leading-snug">AI Product Manager, Mercedes-Benz</h3>
+                <span class="font-dm text-lg text-secondary flex-shrink-0">2025 – Current</span>
+              </div>
+              <div class="flex justify-between items-start gap-4">
+                <h3 class="font-dm text-2xl font-medium text-ctext leading-snug">UX/UI Designer, FocalX</h3>
+                <span class="font-dm text-lg text-secondary flex-shrink-0">2024 – 2025</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="mt-4 bg-secondary px-6 md:px-14 lg:px-20 py-7">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: NOT YET 01 -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-not-yet-01" class="page">
+  <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+            style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
+    <div class="flex items-center gap-6">
+      <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+    </div>
+  </header>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
+    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
+      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
+      <span class="text-cborder">·</span>
+      <span class="text-secondary">AI experiments - documented honestly</span>
+      <span class="text-cborder">·</span>
+      <span class="text-accent font-semibold">FIELD REPORT #001</span>
+    </div>
+    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">
+      I built an AI Agent to check labelling compliance at work.
+    </h1>
+    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
+    <div class="divider mb-14"></div>
+    <div class="max-w-2xl space-y-12">
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT WORKED</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Accesses and reads e-mails automatically</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Analyses designs against the labeling norm</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identifies compliance issues + suggests fixes</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Drafts responses in my writing style</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT DIDN'T</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Can't auto-populate the e-mail reply</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Can't connect to design tools for visual review</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">STILL TRAINING</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>Shorter, sharper answers</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>Learning from my corrections over time</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider mt-16 mb-10"></div>
+    <div class="flex justify-between items-center">
+      <div></div>
+      <button class="btn-metal" onclick="navigate('not-yet-02')">
+        <span class="btn-metal-face">Next Field Report →</span>
+      </button>
+    </div>
+  </main>
+  <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: NOT YET 02 -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-not-yet-02" class="page">
+  <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+            style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
+    <div class="flex items-center gap-6">
+      <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+    </div>
+  </header>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
+    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
+      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
+      <span class="text-cborder">·</span>
+      <span class="text-secondary">AI experiments - documented honestly</span>
+      <span class="text-cborder">·</span>
+      <span class="text-accent font-semibold">FIELD REPORT #002</span>
+    </div>
+    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">I track my spendings with AI</h1>
+    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
+    <div class="divider mb-14"></div>
+    <div class="max-w-2xl space-y-12">
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I WANTED</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Track spendings without manually typing every item</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I DID</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Saved bill &amp; invoice photos in a folder</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Used Claude Cowork + gave it access to the folder</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Gave Claude a prompt: extract, categorise, calculate</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Asked for savings rate + advice on where to cut</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT CLAUDE DID</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Read all the bills and extracted the data</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Calculated totals per category + saving rate</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Gave advice on where I spend most</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Done in under 5 minutes</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT IT NEEDS FROM YOU</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Photos of your bills</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>A bit of organisation upfront</li>
+        </ul>
+      </div>
+    </div>
+    <div class="divider mt-16 mb-10"></div>
+    <div class="flex justify-between items-center">
+      <button class="btn-metal" onclick="navigate('not-yet-01')">
+        <span class="btn-metal-face">← Previous Field Report</span>
+      </button>
+      <button class="btn-metal" onclick="navigate('not-yet-03')">
+        <span class="btn-metal-face">Next Field Report →</span>
+      </button>
+    </div>
+  </main>
+  <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: NOT YET 03 -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-not-yet-03" class="page">
+  <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+            style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
+    <div class="flex items-center gap-6">
+      <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+    </div>
+  </header>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
+    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
+      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
+      <span class="text-cborder">·</span>
+      <span class="text-secondary">AI experiments - documented honestly</span>
+      <span class="text-cborder">·</span>
+      <span class="text-accent font-semibold">FIELD REPORT #003</span>
+    </div>
+    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">
+      300 photos. One supplier code.<br>Two AI tools.
+    </h1>
+    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
+    <div class="divider mb-14"></div>
+    <div class="max-w-2xl space-y-12">
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">THE TASK</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identify labels from one specific supplier across 300 photos</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Each label has a unique supplier code</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I DID WITH COPILOT</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Wrote a prompt explaining exactly what to find</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Added a reference photo showing where the code appears</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Uploaded photos manually — max 20 at a time</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Repeated the process in batches</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT WORKED</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identified the right labels with the supplier code</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Saved time vs checking 300 photos manually</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Likely caught labels I would have missed myself</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT DIDN'T</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>20 photo limit — manual batching took time</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Gave extra info I didn't ask for — too much text</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Still had to manually search files by name in the folder</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT CLAUDE COWORK WOULD HAVE DONE</h2>
+        <ul class="space-y-4">
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Give it folder access — no manual uploading</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Run the prompt across all 300 photos at once</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Return only what I asked — clean, no extra text</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Tell me how many photos matched</li>
+          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Sort matching photos to the top of the folder</li>
+        </ul>
+      </div>
+      <div class="card p-10">
+        <p class="slabel mb-4">THE INSIGHT</p>
+        <blockquote class="font-syne text-3xl font-bold text-ctext leading-tight">AI should protect your mental capacity</blockquote>
+        <p class="font-dm text-lg text-dark mt-5 leading-relaxed">Copilot helped. But I was still managing the process. With the right tool + folder access, I run one prompt and move on.</p>
+        <div class="mt-6 flex flex-wrap gap-4 text-sm font-dm text-secondary">
+          <span>Tool Used: Microsoft Copilot</span><span>·</span><span>Tool Wanted: Claude Cowork</span>
+        </div>
+      </div>
+    </div>
+    <div class="divider mt-16 mb-10"></div>
+    <div class="flex justify-between items-center">
+      <button class="btn-metal" onclick="navigate('not-yet-02')">
+        <span class="btn-metal-face">← Previous Field Report</span>
+      </button>
+      <div></div>
+    </div>
+  </main>
+  <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: PUBLIC CASE STUDY -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-public-case-study" class="page">
+  <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+            style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
+    <div class="flex items-center gap-6">
+      <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+    </div>
+  </header>
+
+  <div class="px-6 md:px-14 lg:px-20 pt-10 pb-14 max-w-screen-xl mx-auto">
+    <p class="slabel mb-3">AI PM Work</p>
+    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-4xl mb-5">
+      Building a reliable counterfeit detection system at scale
+    </h1>
+    <p class="font-dm text-xl text-dark max-w-2xl mb-7">
+      Architecting a Multi-Layer Detection Solution to Protect Billions in Annual Value
+    </p>
+    <button class="btn-metal" onclick="navigate('protected-case-study')">
+      <span class="btn-metal-face">View Full Case Study →</span>
+    </button>
+  </div>
+  <div class="divider"></div>
+
+  <div class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto py-14 flex gap-14">
+    <aside class="hidden lg:block w-44 flex-shrink-0">
+      <nav class="sticky top-28 space-y-0.5" id="pub-snav">
+        <a href="#pub-background" class="snav-link on" onclick="smoothScroll(event,'pub-background')">Background</a>
+        <a href="#pub-strategy" class="snav-link" onclick="smoothScroll(event,'pub-strategy')">Strategy</a>
+        <a href="#pub-system" class="snav-link" onclick="smoothScroll(event,'pub-system')">System</a>
+        <a href="#pub-mobile" class="snav-link" onclick="smoothScroll(event,'pub-mobile')">Mobile APP</a>
+        <a href="#pub-rule-engine" class="snav-link" onclick="smoothScroll(event,'pub-rule-engine')">Rule Engine</a>
+        <a href="#pub-ux-audit" class="snav-link" onclick="smoothScroll(event,'pub-ux-audit')">UX Audit</a>
+        <a href="#pub-additional" class="snav-link" onclick="smoothScroll(event,'pub-additional')">Additional Security</a>
+        <a href="#pub-measurements" class="snav-link" onclick="smoothScroll(event,'pub-measurements')">Measurements</a>
+        <a href="#pub-insights" class="snav-link" onclick="smoothScroll(event,'pub-insights')">Insights</a>
+      </nav>
+    </aside>
+
+    <div class="flex-1 max-w-3xl space-y-20">
+      <section id="pub-background">
+        <p class="slabel mb-3">Background</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Background</h2>
+        <p class="font-dm text-xl text-dark leading-relaxed mb-4">This is a global authentication initiative protecting billions in annual supply chain value.</p>
+        <p class="font-dm text-xl text-dark leading-relaxed">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems. Key data systems include a Print Database, labeling systems, and Master Data repositories.</p>
+      </section>
+
+      <section id="pub-strategy">
+        <p class="slabel mb-3">Strategy</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
+        <p class="font-dm text-xl text-dark leading-relaxed mb-7">The strategy is to reduce friction in the field application so teams can verify more products, allowing the field application to filter genuine products at scale while the team focuses on real threats.</p>
+        <img src="imgs/strategy-graph-pub.png" alt="Strategy graph" class="section-img mb-7">
+        <div class="callout"><span class="callout-icon">!</span><span>Full strategy is included in the protected case study (password-protected for confidentiality).</span></div>
+      </section>
+
+      <section id="pub-system">
+        <p class="slabel mb-3">System</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
+        <p class="font-dm text-xl text-dark leading-relaxed mb-4">System Architecture: The mobile detection platform integrates 6+ data sources and operational systems.</p>
+        <p class="font-dm text-xl text-dark leading-relaxed mb-7">Key Challenge: coordinating complex integrations across organisational boundaries while maintaining a single, unified user experience.</p>
+        <img src="imgs/system-diagram-pub.png" alt="System architecture diagram" class="section-img mb-7">
+        <div class="callout"><span class="callout-icon">!</span><span>Full technical architecture and system details are included in the protected case study (password-protected for confidentiality).</span></div>
+      </section>
+
+      <section id="pub-mobile">
+        <p class="slabel mb-3">Mobile APP</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Mobile APP Functionality</h2>
+        <p class="font-dm text-xl text-dark leading-relaxed mb-7">Verify products, identify inconsistencies instantly. The system filters genuine items from suspicious ones, so your team focuses only on real threats—protecting billions in supply chain value.</p>
+        <img src="imgs/app-screens-01.png" alt="Mobile app screenshots" class="section-img mb-7">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div class="card p-7">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Challenges</h3>
+            <p class="font-dm text-base text-dark leading-relaxed">Detection engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data. System coverage: 30%.</p>
+          </div>
+          <div class="card p-7">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Solutions</h3>
+            <p class="font-dm text-base text-dark leading-relaxed">System 1: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.<br><br>System 2: Add encryption as alternative authentication method.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="pub-rule-engine">
+        <p class="slabel mb-3">Mobile APP: Detection Engine</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Detection Engine Built on Incomplete Assumptions</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+          <div class="card p-7">
+            <h3 class="font-syne text-lg font-bold text-ctext mb-3">Detection Engine "Perfect Life"</h3>
+            <p class="font-dm text-base text-dark leading-relaxed">Built on assumption: complete product identification data universally available across the supply chain.</p>
+          </div>
+          <div class="card p-7">
+            <h3 class="font-syne text-lg font-bold text-ctext mb-3">Detection Engine "Real Life"</h3>
+            <p class="font-dm text-base text-dark leading-relaxed">Legacy products lack modern identification markers. Even when identification systems exist, implementation varies widely across suppliers.</p>
+          </div>
+        </div>
+        <div class="card p-8 mb-6">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-3">Lessons</h3>
+          <p class="font-dm text-lg text-dark font-medium">Don't assume what systems can do. Investigate the actual capabilities.</p>
+        </div>
+        <div class="callout"><span class="callout-icon">!</span><span>For a comprehensive understanding of how the detection engine limitation was diagnosed and managed, please refer to the protected case study.</span></div>
+      </section>
+
+      <section id="pub-ux-audit">
+        <p class="slabel mb-3">Mobile APP: UX Audit</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
+        <p class="font-dm text-lg text-secondary mb-8">During my early months, I discovered previous user research that hadn't been acted upon. I conducted a comprehensive UX audit.</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
+          <div class="card p-7">
+            <h3 class="font-syne text-lg font-bold text-ctext mb-3">Users' Response</h3>
+            <ul class="space-y-2 font-dm text-base text-dark">
+              <li>Interface Not Intuitive</li>
+              <li>Excessive information on screen</li>
+              <li>Workflow too lengthy and time-consuming</li>
+              <li>Reliability concerns</li>
+            </ul>
+          </div>
+          <div class="card p-7">
+            <h3 class="font-syne text-lg font-bold text-ctext mb-3">UX Audit Finding</h3>
+            <p class="font-dm text-base text-dark leading-relaxed">Main screen overwhelmed with features: 7+ information categories with no clear hierarchy.</p>
+          </div>
+        </div>
+        <p class="slabel mb-3">Simplifying the Workflow</p>
+        <img src="imgs/flow-proposed-pub.png" alt="Proposed scanning flow" class="section-img mb-7">
+        <div class="callout"><span class="callout-icon">!</span><span>For detailed before/after comparisons, wireframe progression (Phase 1 and Phase 2 designs), and user testing results, please refer to the protected case study.</span></div>
+      </section>
+
+      <section id="pub-additional">
+        <p class="slabel mb-3">Additional Security</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Managing External Vendor Coordination</h2>
+        <div class="card p-8 mb-5">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Depth</h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">ASF is an encryption solution being integrated to add invisible security markers to labels. ASF will be integrated into the Mobile APP, allowing field inspectors to authenticate labels using an additional security layer.</p>
+        </div>
+        <div class="card p-8 mb-5">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-3">Third-Party Integration Constraints</h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">Implementing the encryption solution required coordinating between multiple external vendors. Organisational policy required formal governance structures that extended timelines significantly.</p>
+        </div>
+        <div class="card p-8 mb-6">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-3">How I Managed It</h3>
+          <p class="font-dm text-lg text-dark leading-relaxed">Accepted the constraint and adapted: documented all technical questions clearly, tracked feasibility blockers, kept stakeholders informed throughout.</p>
+        </div>
+        <div class="callout"><span class="callout-icon">!</span><span>Complete vendor coordination timeline and technical feasibility assessments are documented in the protected case study.</span></div>
+      </section>
+
+      <section id="pub-measurements">
+        <p class="slabel mb-3">Measurements</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
+        <div class="card p-8 mb-5">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-4">Current Implementation Status</h3>
+          <ul class="space-y-3">
+            <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
+            <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing</li>
+            <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>Encryption Layer: Technical feasibility assessment ongoing</li>
+          </ul>
+        </div>
+        <div class="card p-8 mb-6">
+          <h3 class="font-syne text-xl font-bold text-ctext mb-4">Timeline</h3>
+          <ul class="space-y-3 font-dm text-lg text-dark">
+            <li class="flex items-start gap-4"><span class="text-accent font-semibold min-w-[90px]">Q2 2026</span>Data integration ships + Phase 1 UX results validated</li>
+            <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[90px]">Q2/Q3 2026</span>Encryption layer technical decision → integration planning</li>
+            <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[90px]">Q3 2026</span>ML verification layer assessment</li>
+          </ul>
+        </div>
+        <div class="callout"><span class="callout-icon">!</span><span>Detailed business impact metrics, measurement methodology, and expected outcomes are documented in the protected case study.</span></div>
+      </section>
+
+      <section id="pub-insights">
+        <p class="slabel mb-3">Insights</p>
+        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Key Product Insight</h2>
+        <div class="card p-10">
+          <p class="font-syne text-2xl font-bold text-ctext leading-tight mb-6">The core challenge was not model capability alone, but the mismatch between system assumptions and real-world operational conditions.</p>
+          <p class="font-dm text-lg text-dark leading-relaxed">Improving detection meant diagnosing the gap between what the system assumed and what the operational environment actually provided — and then redesigning both the data architecture and the user experience to match reality.</p>
+        </div>
+      </section>
+
+      <div class="callout"><span class="callout-icon">!</span><span>To respect confidentiality constraints, this case study presents a generalized version of the project. A full in-depth version is available for recruiters and hiring managers upon request.</span></div>
+    </div>
+  </div>
+
+  <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
+    <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- PAGE: PROTECTED CASE STUDY -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="page-protected-case-study" class="page">
+  <!-- Password gate -->
+  <div class="pgate" id="pgate">
+    <div class="card p-10 w-full max-w-md">
+      <p class="slabel mb-2">Protected Content</p>
+      <h2 class="font-syne text-3xl font-bold text-ctext mb-1">Full Case Study</h2>
+      <p class="font-dm text-base text-secondary mb-8">Password-protected for confidentiality.</p>
+      <input type="password" id="pinput" class="pinput mb-2" placeholder="Enter password"
+             onkeydown="if(event.key==='Enter')checkPw()">
+      <p id="perror" class="font-dm text-sm text-accent mb-4 hidden">Incorrect password. Please try again.</p>
+      <button class="btn-metal w-full mb-3" style="border-radius:12px;" onclick="checkPw()">
+        <span class="btn-metal-face" style="width:100%; border-radius:10px;">Access Case Study</span>
+      </button>
+      <button class="btn-metal w-full" style="border-radius:12px;" onclick="navigate('home')">
+        <span class="btn-metal-face" style="width:100%; border-radius:10px;">← Back to Portfolio</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Protected content -->
+  <div id="prot-content" class="hidden">
+    <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
+      <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+              style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
+      <div class="flex items-center gap-6">
+        <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
+        <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
+      </div>
+    </header>
+
+    <div class="px-6 md:px-14 lg:px-20 pt-10 pb-14 max-w-screen-xl mx-auto">
+      <p class="slabel mb-3">AI PM Work · Full Case Study</p>
+      <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-4xl mb-5">
+        Building a reliable counterfeit detection system at scale
+      </h1>
+      <p class="font-dm text-xl text-dark max-w-2xl mb-5">Architecting a Two-Layer AI Authentication System to protect €1.4B</p>
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-dm text-sm text-accent font-medium border border-accent/30 bg-accent/5">
+        <span class="w-2 h-2 rounded-full bg-accent"></span>Confidential — Full Version
+      </span>
+    </div>
+    <div class="divider"></div>
+
+    <div class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto py-14 flex gap-14">
+      <aside class="hidden lg:block w-44 flex-shrink-0">
+        <nav class="sticky top-28 space-y-0.5" id="prot-snav">
+          <a href="#prot-background" class="snav-link on" onclick="smoothScroll(event,'prot-background')">Background</a>
+          <a href="#prot-strategy" class="snav-link" onclick="smoothScroll(event,'prot-strategy')">Strategy</a>
+          <a href="#prot-system" class="snav-link" onclick="smoothScroll(event,'prot-system')">System</a>
+          <a href="#prot-mobile" class="snav-link" onclick="smoothScroll(event,'prot-mobile')">Mobile APP</a>
+          <a href="#prot-rule-engine" class="snav-link" onclick="smoothScroll(event,'prot-rule-engine')">Rule Engine</a>
+          <a href="#prot-ux-audit" class="snav-link" onclick="smoothScroll(event,'prot-ux-audit')">UX Audit</a>
+          <a href="#prot-scanning" class="snav-link" onclick="smoothScroll(event,'prot-scanning')">Scanning Flow</a>
+          <a href="#prot-additional" class="snav-link" onclick="smoothScroll(event,'prot-additional')">Additional Security</a>
+          <a href="#prot-measurements" class="snav-link" onclick="smoothScroll(event,'prot-measurements')">Measurements</a>
+          <a href="#prot-insights" class="snav-link" onclick="smoothScroll(event,'prot-insights')">Insights</a>
+        </nav>
+      </aside>
+
+      <div class="flex-1 max-w-3xl space-y-20">
+        <section id="prot-background">
+          <p class="slabel mb-3">Background</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Background</h2>
+          <p class="font-dm text-xl text-dark leading-relaxed mb-4">This is a global anti-counterfeiting initiative protecting €1.4B annually.</p>
+          <p class="font-dm text-xl text-dark leading-relaxed mb-4">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems: a Print Database, labeling systems (ABC/Big ABC), Master Data repositories, and an Omni case management system.</p>
+          <p class="font-dm text-sm text-secondary italic">Note: System names have been changed for confidentiality.</p>
+        </section>
+
+        <section id="prot-strategy">
+          <p class="slabel mb-3">Strategy</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
+          <p class="font-dm text-xl text-dark leading-relaxed mb-7">The strategy is to reduce friction in the Mobile App so field inspectors can scan more labels, allowing the app to filter genuine products at scale while the team focuses only on real threats—protecting €1.4B in annual value.</p>
+          <img src="imgs/strategy-graph.png" alt="Strategy graph" class="section-img">
+        </section>
+
+        <section id="prot-system">
+          <p class="slabel mb-3">System</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
+          <img src="imgs/system-diagram.png" alt="System architecture diagram" class="section-img mb-7">
+          <div class="space-y-3">
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">Mobile APP</span>
+              <p class="font-dm text-base text-dark leading-relaxed">ML-powered label scanner trained on thousands of genuine and counterfeit labels. Identifies counterfeits in real-time.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">Print Database</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Stores label and package designs. Receives product data from Master Data; sends to Mobile APP.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">ABC</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Printing system that creates unique DMC codes on labels. Two versions: Online (creates codes) and Offline (supplier code only). Not all suppliers use both.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">Big ABC</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Packaging database connected to Master Data.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">Master Data</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Authoritative database of all product information (Part Number, description, supplier, country of origin). Currently integrating with Mobile APP.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">ASF</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Third-party encryption solution. Adds invisible security layer to labels and packaging for additional authentication.</p>
+            </div>
+            <div class="card p-5 flex gap-5 items-start">
+              <span class="font-syne font-bold text-ctext w-36 flex-shrink-0">Omni</span>
+              <p class="font-dm text-base text-dark leading-relaxed">Case management system where field inspection cases arrive from inspectors.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="prot-mobile">
+          <p class="slabel mb-3">Mobile APP</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Mobile APP Functionality</h2>
+          <p class="font-dm text-xl text-dark leading-relaxed mb-7">Scan labels, identify counterfeits instantly. The app filters genuine products from suspicious ones, so the team focuses only on real threats—protecting €1.4B in annual value.</p>
+          <img src="imgs/app-screens-01.png" alt="Mobile app screens" class="section-img mb-7">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <div class="card p-7">
+              <h3 class="font-syne text-xl font-bold text-ctext mb-3">Challenges</h3>
+              <p class="font-dm text-base text-dark leading-relaxed">Rule engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data. System coverage: 30%.</p>
+            </div>
+            <div class="card p-7">
+              <h3 class="font-syne text-xl font-bold text-ctext mb-3">Solutions</h3>
+              <p class="font-dm text-base text-dark leading-relaxed">Master Data integration: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.<br><br>ASF security layer: Add encryption as alternative authentication method.</p>
+            </div>
+          </div>
+        </section>
+
+        <section id="prot-rule-engine">
+          <p class="slabel mb-3">Mobile APP: Rule Engine</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Rule Engine Built on False Assumptions: Solved with Master Data Integration</h2>
+          <div class="card p-8 mb-6 text-center">
+            <div class="stat-big mb-2">70–80%</div>
+            <p class="font-dm text-lg text-dark">of labels in the active supply chain lack the serialisation the rule engine expects</p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
+            <div class="card p-7">
+              <h3 class="font-syne text-lg font-bold text-ctext mb-3">Rule Engine "Perfect Life"</h3>
+              <p class="font-dm text-base text-dark leading-relaxed">Built on flawed assumption: that all labels would contain DMC (Data Matrix Code) serialisation — a unique code generated when suppliers print information from the ABC system.</p>
+            </div>
+            <div class="card p-7">
+              <h3 class="font-syne text-lg font-bold text-ctext mb-3">Rule Engine "Real Life"</h3>
+              <p class="font-dm text-base text-dark leading-relaxed">Pre-DMC era: Millions of existing labels have no serialisation. Even in the ABC system, not all suppliers use both Online and Offline versions.</p>
+            </div>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Why ABC was not the answer</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">When I took over, the challenge was already discovered by my predecessor. The initial strategy was to pull additional product info from the ABC system — but ABC couldn't reliably provide it across all label types.</p>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">The Stakeholder Discovery</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">While investigating ABC, I realised there was no stakeholder map. I discovered that Logistics owned both the Print Database and the ABC system itself. This opened a new conversation — and ultimately a better solution.</p>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Master Data as the Solution</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">During a workshop with the Logistics team, they suggested connecting Mobile APP directly to Master Data instead. I approached the Master Data team, got alignment, and initiated integration. This expands detection coverage from 30% to 70%+.</p>
+          </div>
+          <div class="card p-8">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Lessons</h3>
+            <p class="font-dm text-lg text-dark font-medium">Don't assume what systems can do. Investigate the actual capabilities.</p>
+          </div>
+        </section>
+
+        <section id="prot-ux-audit">
+          <p class="slabel mb-3">Mobile APP: UX Audit</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
+          <p class="font-dm text-lg text-secondary mb-7">Two months ago, I discovered a user survey from mid-2025 that had been overlooked. I decided to act on it, completed a UX Audit in a day.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
+            <div class="card p-7">
+              <h3 class="font-syne text-lg font-bold text-ctext mb-3">Users' Response</h3>
+              <ul class="space-y-2 font-dm text-base text-dark">
+                <li>App Not Intuitive</li><li>Too much text</li>
+                <li>Scan Flow is too long</li>
+                <li>Not reliable — confirming rule engine issues</li>
+              </ul>
+            </div>
+            <div class="card p-7">
+              <h3 class="font-syne text-lg font-bold text-ctext mb-3">UX Audit Finding</h3>
+              <p class="font-dm text-base text-dark leading-relaxed">Main screen had 5 tabs (Label Verification, Results, Scans, Legal, User Manual) with no information hierarchy. Core goal: scan as many labels as possible — but interface worked against it.</p>
+            </div>
+          </div>
+          <img src="imgs/app-screens-02.png" alt="App screens before redesign" class="section-img mb-7">
+          <div class="card p-8">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">UI: From Complexity to Clarity</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed mb-4">Constraints I worked within:</p>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Budget:</strong> Designed a 2-phase UX rollout.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Team Lead resistance:</strong> Initially said UX was fine. I documented the audit findings and presented user data — the evidence changed the conversation.</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="prot-scanning">
+          <p class="slabel mb-3">Scanning Flow</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From 5 Tabs to Focused Interface</h2>
+          <div class="card p-8 mb-6">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Early Detection: Starting with ASF Authentication</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">The scanning workflow now starts with ASF verification — inspectors check the encryption layer first, providing immediate authentication before proceeding to label scanning.</p>
+          </div>
+          <p class="slabel mb-3 mt-8">Current Flow</p>
+          <img src="imgs/flow-current.png" alt="Current scanning flow" class="section-img mb-7">
+          <p class="slabel mb-3 mt-8">Proposed Flow</p>
+          <img src="imgs/flow-proposed.png" alt="Proposed scanning flow" class="section-img mb-7">
+          <img src="imgs/app-screens-03.png" alt="App UI redesign" class="section-img mb-7">
+          <div class="card p-8">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-4">Key Simplifications</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Scan Flow:</strong> focusing only on scanning</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Scans under Cases:</strong> now inspectors know which scans belong to which case</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Secondary info moved under Burger menu:</strong> inspectors are no longer distracted</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Add User Flow:</strong> tested with users and removed — added no value</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Take Additional Photo:</strong> tested and confirmed by Product Identification Team as no-value — removed</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="prot-additional">
+          <p class="slabel mb-3">Additional Security</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">ASF Integration: The 4-Month Delay and How I Managed It</h2>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Depth</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">ASF is an encryption solution being integrated to add invisible security markers to labels. ASF will be integrated into the Mobile APP, allowing field inspectors to authenticate labels using an additional security layer alongside the ML detection engine.</p>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">The ASF Escalation Challenge</h3>
+            <p class="font-dm text-lg text-dark leading-relaxed">When I took over, NDAs were already signed with 2 potential ASF suppliers, but technical feasibility remained unclear. The core blocker: the ASF suppliers couldn't speak directly to our engineering team due to organisational policy.</p>
+            <p class="font-dm text-lg text-dark leading-relaxed mt-4">Every technical question had to go through legal, through official channels — adding weeks to each exchange. This constraint cost approximately 4 months of delay.</p>
+          </div>
+          <div class="card p-8">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-3">The Impact &amp; How I Managed It</h3>
+            <ul class="space-y-3 mt-2">
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Documented all technical questions clearly to minimise misunderstandings</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Tracked feasibility blockers and created a decision log</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Kept stakeholders informed with clear status updates</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Escalated only when decisions were blocked, not to vent frustration</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="prot-measurements">
+          <p class="slabel mb-3">Measurements</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-5">Business Impact (2024 baseline)</h3>
+            <div class="grid grid-cols-2 gap-6">
+              <div><div class="font-syne text-3xl font-bold text-accent">€1.4B</div><p class="font-dm text-sm text-secondary mt-1">in annual gross profit safeguarded</p></div>
+              <div><div class="font-syne text-3xl font-bold text-accent">€50–100M</div><p class="font-dm text-sm text-secondary mt-1">in brand value protected</p></div>
+              <div><div class="font-syne text-3xl font-bold text-accent">€1.56M</div><p class="font-dm text-sm text-secondary mt-1">in counterfeit products seized</p></div>
+              <div><div class="font-syne text-3xl font-bold text-accent">€2.8M+</div><p class="font-dm text-sm text-secondary mt-1">in claims managed</p></div>
+            </div>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-4">Current Implementation Status</h3>
+            <ul class="space-y-3">
+              <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
+              <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing (Phase 2 pending Phase 1 results)</li>
+              <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>ASF Integration: Technical feasibility assessment ongoing</li>
+            </ul>
+          </div>
+          <div class="card p-8 mb-5">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-4">Metrics Being Tracked</h3>
+            <ul class="space-y-3 font-dm text-lg text-dark">
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX Redesign Impact: Scans per inspector per case — baseline establishing → target increase of 15–20%</li>
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Detection Capability: Expected expansion from 30% to 70%+ coverage</li>
+            </ul>
+          </div>
+          <div class="card p-8">
+            <h3 class="font-syne text-xl font-bold text-ctext mb-4">Timeline</h3>
+            <ul class="space-y-4 font-dm text-lg text-dark">
+              <li class="flex items-start gap-4"><span class="text-accent font-semibold min-w-[90px]">Q2 2026</span>Master Data integration ships + Phase 1 UX results validated (50% detection improvement)</li>
+              <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[90px]">Q2/Q3 2026</span>ASF technical feasibility decision → integration planning</li>
+              <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[90px]">Q3 2026</span>ML verification layer assessment</li>
+            </ul>
+          </div>
+        </section>
+
+        <section id="prot-insights">
+          <p class="slabel mb-3">Insights</p>
+          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Key Product Insight</h2>
+          <div class="card p-10">
+            <p class="font-syne text-2xl font-bold text-ctext leading-tight mb-6">The core challenge was not model capability alone, but the mismatch between system assumptions and real-world operational conditions.</p>
+            <p class="font-dm text-lg text-dark leading-relaxed">Improving detection meant diagnosing the gap between what the system assumed and what the operational environment actually provided — and then redesigning both the data architecture and the user experience to match reality.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
+      <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
+        <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
+        <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- SCRIPT -->
+<!-- ══════════════════════════════════════════════ -->
+<script>
+  const PAGES = ['home','not-yet-01','not-yet-02','not-yet-03','public-case-study','protected-case-study'];
+  const PW = 'PsPMAi2026';
+  let authed = sessionStorage.getItem('cs_auth') === '1';
+
+  function navigate(id) {
+    PAGES.forEach(p => {
+      const el = document.getElementById('page-' + p);
+      if (el) el.classList.remove('active');
+    });
+    const target = document.getElementById('page-' + id);
+    if (!target) return;
+    target.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'instant' });
+
+    if (id === 'protected-case-study') {
+      const gate = document.getElementById('pgate');
+      const content = document.getElementById('prot-content');
+      if (authed) {
+        gate.style.display = 'none';
+        content.classList.remove('hidden');
+      } else {
+        gate.style.display = 'flex';
+        content.classList.add('hidden');
+      }
+    }
+
+    history.pushState({ page: id }, '', '#' + id);
+  }
+
+  function navTo(pageId, anchor) {
+    const currentPage = document.querySelector('.page.active');
+    const isHome = currentPage && currentPage.id === 'page-home';
+
+    if (isHome) {
+      // Already on home, just scroll
+      const el = document.getElementById(anchor);
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      navigate(pageId);
+      setTimeout(() => {
+        const el = document.getElementById(anchor);
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 120);
+    }
+  }
+
+  function smoothScroll(e, id) {
+    e.preventDefault();
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function checkPw() {
+    const val = document.getElementById('pinput').value;
+    const err = document.getElementById('perror');
+    if (val === PW) {
+      authed = true;
+      sessionStorage.setItem('cs_auth', '1');
+      document.getElementById('pgate').style.display = 'none';
+      document.getElementById('prot-content').classList.remove('hidden');
+      err.classList.add('hidden');
+    } else {
+      err.classList.remove('hidden');
+      document.getElementById('pinput').value = '';
+      document.getElementById('pinput').focus();
+    }
+  }
+
+  // Sidebar scroll spy
+  function setupScrollSpy(navId) {
+    const nav = document.getElementById(navId);
+    if (!nav) return;
+    const links = [...nav.querySelectorAll('.snav-link')];
+    const sections = links.map(l => {
+      const id = l.getAttribute('href').slice(1);
+      return { el: document.getElementById(id), link: l };
+    }).filter(s => s.el);
+
+    window.addEventListener('scroll', () => {
+      const page = nav.closest('.page');
+      if (!page || !page.classList.contains('active')) return;
+      let current = sections[0];
+      sections.forEach(s => {
+        if (window.scrollY + 140 >= s.el.offsetTop) current = s;
+      });
+      links.forEach(l => l.classList.remove('on'));
+      if (current) current.link.classList.add('on');
+    }, { passive: true });
+  }
+  setupScrollSpy('pub-snav');
+  setupScrollSpy('prot-snav');
+
+  // Scroll-to-top
+  const sttBtn = document.getElementById('sttBtn');
+  window.addEventListener('scroll', () => {
+    sttBtn.classList.toggle('show', window.scrollY > 300);
+  }, { passive: true });
+
+  // Back/forward
+  window.addEventListener('popstate', e => {
+    const page = (e.state && e.state.page) ? e.state.page : 'home';
+    navigate(page);
+  });
+
+  // Init
+  const hash = location.hash.slice(1);
+  if (hash && PAGES.includes(hash)) {
+    navigate(hash);
+  } else {
+    history.replaceState({ page: 'home' }, '', '#home');
+  }
+</script>
+</body>
+</html>
