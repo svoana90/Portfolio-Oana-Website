@@ -27,6 +27,14 @@
             syne: ['Syne', 'sans-serif'],
             dm: ['DM Sans', 'sans-serif'],
           },
+          fontSize: {
+            'f-heading':  ['48px', { lineHeight: '1.05' }],
+            'f-title1':   ['40px', { lineHeight: '1.1'  }],
+            'f-title2':   ['32px', { lineHeight: '1.15' }],
+            'f-headline': ['24px', { lineHeight: '1.3'  }],
+            'f-body':     ['22px', { lineHeight: '1.65' }],
+            'f-body-sm':  ['18px', { lineHeight: '1.65' }],
+          },
         }
       }
     }
@@ -117,8 +125,8 @@
       text-shadow: 0 1px 2px rgba(0,0,0,.5); white-space: nowrap;
       transition: background 200ms;
     }
-    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #484848 0%, #242424 100%); }
-    .btn-metal:hover { box-shadow: 0 4px 14px rgba(0,0,0,.32); }
+    .btn-metal:hover { background: linear-gradient(180deg, #FF3D86 0%, #c41455 100%); box-shadow: 0 4px 16px rgba(255,45,120,.38); }
+    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #FF2D78 0%, #d01460 100%); }
     .btn-metal:active { transform: translateY(2px) scale(.98); box-shadow: 0 1px 4px rgba(0,0,0,.25); }
     .btn-metal:focus-visible { outline: 2px solid #FF2D78; outline-offset: 3px; }
 
@@ -705,7 +713,7 @@
   <div class="divider"></div>
 
   <div class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto py-14 flex gap-14">
-    <aside class="hidden lg:block w-44 flex-shrink-0">
+    <aside class="hidden lg:block w-44 flex-shrink-0 order-last">
       <nav class="sticky top-28 space-y-0.5" id="pub-snav">
         <a href="#pub-background" class="snav-link on" onclick="smoothScroll(event,'pub-background')">Background</a>
         <a href="#pub-strategy" class="snav-link" onclick="smoothScroll(event,'pub-strategy')">Strategy</a>
@@ -722,32 +730,32 @@
     <div class="flex-1 max-w-3xl space-y-20">
       <section id="pub-background">
         <p class="slabel mb-3">Background</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Background</h2>
-        <p class="font-dm text-xl text-dark leading-relaxed mb-4">This is a global authentication initiative protecting billions in annual supply chain value.</p>
-        <p class="font-dm text-xl text-dark leading-relaxed">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems. Key data systems include a Print Database, labeling systems, and Master Data repositories.</p>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Background</h2>
+        <p class="font-dm text-f-body text-dark leading-relaxed mb-4">This is a global authentication initiative protecting billions in annual supply chain value.</p>
+        <p class="font-dm text-f-body text-dark leading-relaxed">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems. Key data systems include a Print Database, labeling systems, and Master Data repositories.</p>
       </section>
 
       <section id="pub-strategy">
         <p class="slabel mb-3">Strategy</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
-        <p class="font-dm text-xl text-dark leading-relaxed mb-7">The strategy is to reduce friction in the field application so teams can verify more products, allowing the field application to filter genuine products at scale while the team focuses on real threats.</p>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
+        <p class="font-dm text-f-body text-dark leading-relaxed mb-7">The strategy is to reduce friction in the field application so teams can verify more products, allowing the field application to filter genuine products at scale while the team focuses on real threats.</p>
         <img src="imgs/strategy-graph-pub.png" alt="Strategy graph" class="section-img mb-7">
         <div class="callout"><span class="callout-icon">!</span><span>Full strategy is included in the protected case study (password-protected for confidentiality).</span></div>
       </section>
 
       <section id="pub-system">
         <p class="slabel mb-3">System</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
-        <p class="font-dm text-xl text-dark leading-relaxed mb-4">System Architecture: The mobile detection platform integrates 6+ data sources and operational systems.</p>
-        <p class="font-dm text-xl text-dark leading-relaxed mb-7">Key Challenge: coordinating complex integrations across organisational boundaries while maintaining a single, unified user experience.</p>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
+        <p class="font-dm text-f-body text-dark leading-relaxed mb-4">System Architecture: The mobile detection platform integrates 6+ data sources and operational systems.</p>
+        <p class="font-dm text-f-body text-dark leading-relaxed mb-7">Key Challenge: coordinating complex integrations across organisational boundaries while maintaining a single, unified user experience.</p>
         <img src="imgs/system-diagram-pub.png" alt="System architecture diagram" class="section-img mb-7">
         <div class="callout"><span class="callout-icon">!</span><span>Full technical architecture and system details are included in the protected case study (password-protected for confidentiality).</span></div>
       </section>
 
       <section id="pub-mobile">
         <p class="slabel mb-3">Mobile APP</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Mobile APP Functionality</h2>
-        <p class="font-dm text-xl text-dark leading-relaxed mb-7">Verify products, identify inconsistencies instantly. The system filters genuine items from suspicious ones, so your team focuses only on real threats—protecting billions in supply chain value.</p>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Mobile APP Functionality</h2>
+        <p class="font-dm text-f-body text-dark leading-relaxed mb-7">Verify products, identify inconsistencies instantly. The system filters genuine items from suspicious ones, so your team focuses only on real threats—protecting billions in supply chain value.</p>
         <img src="imgs/app-screens-01.png" alt="Mobile app screenshots" class="section-img mb-7">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div class="card p-7">
@@ -763,7 +771,7 @@
 
       <section id="pub-rule-engine">
         <p class="slabel mb-3">Mobile APP: Detection Engine</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Detection Engine Built on Incomplete Assumptions</h2>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Detection Engine Built on Incomplete Assumptions</h2>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
           <div class="card p-7">
             <h3 class="font-syne text-lg font-bold text-ctext mb-3">Detection Engine "Perfect Life"</h3>
@@ -783,7 +791,7 @@
 
       <section id="pub-ux-audit">
         <p class="slabel mb-3">Mobile APP: UX Audit</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
         <p class="font-dm text-lg text-secondary mb-8">During my early months, I discovered previous user research that hadn't been acted upon. I conducted a comprehensive UX audit.</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
           <div class="card p-7">
@@ -807,7 +815,7 @@
 
       <section id="pub-additional">
         <p class="slabel mb-3">Additional Security</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Managing External Vendor Coordination</h2>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Managing External Vendor Coordination</h2>
         <div class="card p-8 mb-5">
           <h3 class="font-syne text-xl font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Depth</h3>
           <p class="font-dm text-lg text-dark leading-relaxed">ASF is an encryption solution being integrated to add invisible security markers to labels. ASF will be integrated into the Mobile APP, allowing field inspectors to authenticate labels using an additional security layer.</p>
@@ -825,7 +833,7 @@
 
       <section id="pub-measurements">
         <p class="slabel mb-3">Measurements</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
         <div class="card p-8 mb-5">
           <h3 class="font-syne text-xl font-bold text-ctext mb-4">Current Implementation Status</h3>
           <ul class="space-y-3">
@@ -847,7 +855,7 @@
 
       <section id="pub-insights">
         <p class="slabel mb-3">Insights</p>
-        <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Key Product Insight</h2>
+        <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Key Product Insight</h2>
         <div class="card p-10">
           <p class="font-syne text-2xl font-bold text-ctext leading-tight mb-6">The core challenge was not model capability alone, but the mismatch between system assumptions and real-world operational conditions.</p>
           <p class="font-dm text-lg text-dark leading-relaxed">Improving detection meant diagnosing the gap between what the system assumed and what the operational environment actually provided — and then redesigning both the data architecture and the user experience to match reality.</p>
@@ -912,7 +920,7 @@
     <div class="divider"></div>
 
     <div class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto py-14 flex gap-14">
-      <aside class="hidden lg:block w-44 flex-shrink-0">
+      <aside class="hidden lg:block w-44 flex-shrink-0 order-last">
         <nav class="sticky top-28 space-y-0.5" id="prot-snav">
           <a href="#prot-background" class="snav-link on" onclick="smoothScroll(event,'prot-background')">Background</a>
           <a href="#prot-strategy" class="snav-link" onclick="smoothScroll(event,'prot-strategy')">Strategy</a>
@@ -921,6 +929,7 @@
           <a href="#prot-rule-engine" class="snav-link" onclick="smoothScroll(event,'prot-rule-engine')">Rule Engine</a>
           <a href="#prot-ux-audit" class="snav-link" onclick="smoothScroll(event,'prot-ux-audit')">UX Audit</a>
           <a href="#prot-scanning" class="snav-link" onclick="smoothScroll(event,'prot-scanning')">Scanning Flow</a>
+          <a href="#prot-ui" class="snav-link" onclick="smoothScroll(event,'prot-ui')">UI</a>
           <a href="#prot-additional" class="snav-link" onclick="smoothScroll(event,'prot-additional')">Additional Security</a>
           <a href="#prot-measurements" class="snav-link" onclick="smoothScroll(event,'prot-measurements')">Measurements</a>
           <a href="#prot-insights" class="snav-link" onclick="smoothScroll(event,'prot-insights')">Insights</a>
@@ -930,22 +939,22 @@
       <div class="flex-1 max-w-3xl space-y-20">
         <section id="prot-background">
           <p class="slabel mb-3">Background</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Background</h2>
-          <p class="font-dm text-xl text-dark leading-relaxed mb-4">This is a global anti-counterfeiting initiative protecting €1.4B annually.</p>
-          <p class="font-dm text-xl text-dark leading-relaxed mb-4">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems: a Print Database, labeling systems (ABC/Big ABC), Master Data repositories, and an Omni case management system.</p>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Background</h2>
+          <p class="font-dm text-f-body text-dark leading-relaxed mb-4">This is a global anti-counterfeiting initiative protecting €1.4B annually.</p>
+          <p class="font-dm text-f-body text-dark leading-relaxed mb-4">The system includes a Mobile App used by field inspectors, a web platform for analysis, and multiple integrated backend systems: a Print Database, labeling systems (ABC/Big ABC), Master Data repositories, and an Omni case management system.</p>
           <p class="font-dm text-sm text-secondary italic">Note: System names have been changed for confidentiality.</p>
         </section>
 
         <section id="prot-strategy">
           <p class="slabel mb-3">Strategy</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
-          <p class="font-dm text-xl text-dark leading-relaxed mb-7">The strategy is to reduce friction in the Mobile App so field inspectors can scan more labels, allowing the app to filter genuine products at scale while the team focuses only on real threats—protecting €1.4B in annual value.</p>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Reduce Friction, Increase Impact</h2>
+          <p class="font-dm text-f-body text-dark leading-relaxed mb-7">The strategy is to reduce friction in the Mobile App so field inspectors can scan more labels, allowing the app to filter genuine products at scale while the team focuses only on real threats—protecting €1.4B in annual value.</p>
           <img src="imgs/strategy-graph.png" alt="Strategy graph" class="section-img">
         </section>
 
         <section id="prot-system">
           <p class="slabel mb-3">System</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">The Counterfeit Detection System: How All Systems Connect</h2>
           <img src="imgs/system-diagram.png" alt="System architecture diagram" class="section-img mb-7">
           <div class="space-y-3">
             <div class="card p-5 flex gap-5 items-start">
@@ -981,8 +990,8 @@
 
         <section id="prot-mobile">
           <p class="slabel mb-3">Mobile APP</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Mobile APP Functionality</h2>
-          <p class="font-dm text-xl text-dark leading-relaxed mb-7">Scan labels, identify counterfeits instantly. The app filters genuine products from suspicious ones, so the team focuses only on real threats—protecting €1.4B in annual value.</p>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Mobile APP Functionality</h2>
+          <p class="font-dm text-f-body text-dark leading-relaxed mb-7">Scan labels, identify counterfeits instantly. The app filters genuine products from suspicious ones, so the team focuses only on real threats—protecting €1.4B in annual value.</p>
           <img src="imgs/app-screens-01.png" alt="Mobile app screens" class="section-img mb-7">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
             <div class="card p-7">
@@ -998,7 +1007,7 @@
 
         <section id="prot-rule-engine">
           <p class="slabel mb-3">Mobile APP: Rule Engine</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Rule Engine Built on False Assumptions: Solved with Master Data Integration</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Rule Engine Built on False Assumptions: Solved with Master Data Integration</h2>
           <div class="card p-8 mb-6 text-center">
             <div class="stat-big mb-2">70–80%</div>
             <p class="font-dm text-lg text-dark">of labels in the active supply chain lack the serialisation the rule engine expects</p>
@@ -1033,7 +1042,7 @@
 
         <section id="prot-ux-audit">
           <p class="slabel mb-3">Mobile APP: UX Audit</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">From User Feedback to UX Audit to Clarity</h2>
           <p class="font-dm text-lg text-secondary mb-7">Two months ago, I discovered a user survey from mid-2025 that had been overlooked. I decided to act on it, completed a UX Audit in a day.</p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-7">
             <div class="card p-7">
@@ -1062,7 +1071,7 @@
 
         <section id="prot-scanning">
           <p class="slabel mb-3">Scanning Flow</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">From 5 Tabs to Focused Interface</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">From 5 Tabs to Focused Interface</h2>
           <div class="card p-8 mb-6">
             <h3 class="font-syne text-xl font-bold text-ctext mb-3">Early Detection: Starting with ASF Authentication</h3>
             <p class="font-dm text-lg text-dark leading-relaxed">The scanning workflow now starts with ASF verification — inspectors check the encryption layer first, providing immediate authentication before proceeding to label scanning.</p>
@@ -1071,7 +1080,6 @@
           <img src="imgs/flow-current.png" alt="Current scanning flow" class="section-img mb-7">
           <p class="slabel mb-3 mt-8">Proposed Flow</p>
           <img src="imgs/flow-proposed.png" alt="Proposed scanning flow" class="section-img mb-7">
-          <img src="imgs/app-screens-03.png" alt="App UI redesign" class="section-img mb-7">
           <div class="card p-8">
             <h3 class="font-syne text-xl font-bold text-ctext mb-4">Key Simplifications</h3>
             <ul class="space-y-3">
@@ -1084,9 +1092,16 @@
           </div>
         </section>
 
+        <section id="prot-ui">
+          <p class="slabel mb-3">UI Redesign</p>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Redesigned Interface: From Complexity to Clarity</h2>
+          <p class="font-dm text-f-body text-dark leading-relaxed mb-7">The 2-phase UX rollout delivers a focused interface — inspectors scan efficiently without distraction. Phase 1 removes noise; Phase 2 introduces smarter case-to-scan linking.</p>
+          <img src="imgs/app-screens-03.png" alt="Redesigned app UI screens" class="section-img">
+        </section>
+
         <section id="prot-additional">
           <p class="slabel mb-3">Additional Security</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">ASF Integration: The 4-Month Delay and How I Managed It</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">ASF Integration: The 4-Month Delay and How I Managed It</h2>
           <div class="card p-8 mb-5">
             <h3 class="font-syne text-xl font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Depth</h3>
             <p class="font-dm text-lg text-dark leading-relaxed">ASF is an encryption solution being integrated to add invisible security markers to labels. ASF will be integrated into the Mobile APP, allowing field inspectors to authenticate labels using an additional security layer alongside the ML detection engine.</p>
@@ -1109,7 +1124,7 @@
 
         <section id="prot-measurements">
           <p class="slabel mb-3">Measurements</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
           <div class="card p-8 mb-5">
             <h3 class="font-syne text-xl font-bold text-ctext mb-5">Business Impact (2024 baseline)</h3>
             <div class="grid grid-cols-2 gap-6">
@@ -1146,7 +1161,7 @@
 
         <section id="prot-insights">
           <p class="slabel mb-3">Insights</p>
-          <h2 class="font-syne text-4xl font-bold text-ctext mb-6">Key Product Insight</h2>
+          <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Key Product Insight</h2>
           <div class="card p-10">
             <p class="font-syne text-2xl font-bold text-ctext leading-tight mb-6">The core challenge was not model capability alone, but the mismatch between system assumptions and real-world operational conditions.</p>
             <p class="font-dm text-lg text-dark leading-relaxed">Improving detection meant diagnosing the gap between what the system assumed and what the operational environment actually provided — and then redesigning both the data architecture and the user experience to match reality.</p>
