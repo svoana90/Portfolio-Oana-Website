@@ -226,6 +226,36 @@
     .stt:hover { background: #FF2D78; transform: translateY(-2px); }
     .stt:active { transform: translateY(0); }
 
+    /* ── Not Yet card ── */
+    .ny-card { border-radius: 6px; overflow: hidden; }
+    .ny-topbar {
+      background: #FF2D78; padding: 13px 32px;
+      font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.92);
+    }
+    .ny-body { background: #454548; padding: 44px 32px 36px; color: #fff; }
+    @media (max-width: 640px) { .ny-body { padding: 28px 20px 24px; } .ny-topbar, .ny-bottombar { padding-left: 20px; padding-right: 20px; } }
+    .ny-title { font-family: 'Syne', sans-serif; font-size: 40px; font-weight: 700; line-height: 1.1; color: #fff; margin-bottom: 14px; }
+    @media (max-width: 640px) { .ny-title { font-size: 28px; } }
+    .ny-subtitle { font-family: 'DM Sans', sans-serif; font-size: 18px; color: rgba(255,255,255,0.6); }
+    .ny-hr { border: none; border-top: 1px dashed rgba(255,255,255,0.18); margin: 28px 0; }
+    .ny-sh { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; margin-top: 0; }
+    .ny-li { display: flex; align-items: flex-start; gap: 12px; font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.55; }
+    .ny-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+    .ny-dot-pink { background: #FF2D78; }
+    .ny-dot-blue { background: #2563eb; }
+    .ny-dot-gray { background: rgba(255,255,255,0.32); }
+    .ny-dot-trans { background: rgba(255,45,120,0.35); border: 1.5px solid rgba(255,45,120,0.55); }
+    .ny-bottombar { background: #FF2D78; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .ny-brand { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
+    .ny-tagline { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.8); }
+    .ny-nav { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #262626; cursor: pointer; background: none; border: none; text-decoration: none; transition: color .2s; padding: 0; }
+    .ny-nav:hover { color: #FF2D78; }
+    .ny-nav:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; border-radius: 2px; }
+    .ny-insight-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #FF2D78; margin-bottom: 10px; }
+    .tool-badge { display: inline-block; padding: 4px 13px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.75); }
+    .tool-badge-accent { background: #FF2D78; color: #fff; }
+
     /* ── Badge two lines ── */
     .badge-two-line {
       display: inline-block;
@@ -370,7 +400,7 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-01')">
           <p class="slabel mb-4">Field Report #001</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I built an AI Agent to check labelling compliance at work
+            I built an <span class="text-accent">AI Agent</span> to check labelling compliance at work
           </h3>
           <p class="font-dm text-lg text-dark leading-relaxed">
             Reads emails, analyses designs, identifies issues, drafts responses.
@@ -380,7 +410,7 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-02')">
           <p class="slabel mb-4">Field Report #002</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I track my spending with AI
+            I track my spending <span class="text-accent">with AI</span>
           </h3>
           <p class="font-dm text-lg text-dark leading-relaxed">
             Upload bill photos, get categorised expenses, savings rate, and spending advice—no manual data entry required
@@ -390,7 +420,7 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-03')">
           <p class="slabel mb-4">Field Report #003</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            300 photos. One supplier code. Two AI tools
+            300 photos. One supplier code. <span class="text-accent">Two AI</span> tools
           </h3>
           <p class="font-dm text-lg text-dark leading-relaxed">
             Fast identification, but manual batching and file management ate the time savings. Learned: AI tools need folder access to truly scale.
@@ -464,50 +494,47 @@
       <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
     </div>
   </header>
-  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
-    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
-      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
-      <span class="text-cborder">·</span>
-      <span class="text-secondary">AI experiments - documented honestly</span>
-      <span class="text-cborder">·</span>
-      <span class="text-accent font-semibold">FIELD REPORT #001</span>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-16">
+    <div class="ny-card mt-8 lg:mt-10">
+      <div class="ny-topbar">FIELD REPORT #001</div>
+      <div class="ny-body">
+        <h1 class="ny-title">I build an AI agent to check labeling compliance at work.</h1>
+        <p class="ny-subtitle">Here's what actually happened</p>
+        <hr class="ny-hr">
+        <div class="space-y-8">
+          <div>
+            <p class="ny-sh">WHAT WORKED</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Accesses and reads e-mails automatically</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Analyses designs against the labeling norm</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Identifies compliance issues + suggests fixes</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Drafts responses in my writing style</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT DIDN'T</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Can't auto-populate the e-mail replay</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Can't connect to design tools for visual</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">STILL TRAINING</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Shorter, sharper answers</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Learning from my corrections overtime</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="ny-hr">
+      </div>
+      <div class="ny-bottombar">
+        <span class="ny-brand">NOT YET.</span>
+        <span class="ny-tagline">AI experiments – documented honestly</span>
+      </div>
     </div>
-    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">
-      I built an AI Agent to check labelling compliance at work.
-    </h1>
-    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
-    <div class="divider mb-14"></div>
-    <div class="max-w-2xl space-y-12">
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT WORKED</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Accesses and reads e-mails automatically</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Analyses designs against the labeling norm</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identifies compliance issues + suggests fixes</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Drafts responses in my writing style</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT DIDN'T</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Can't auto-populate the e-mail reply</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Can't connect to design tools for visual review</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">STILL TRAINING</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>Shorter, sharper answers</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-muted mt-2 flex-shrink-0"></span>Learning from my corrections over time</li>
-        </ul>
-      </div>
-    </div>
-    <div class="divider mt-16 mb-10"></div>
-    <div class="flex justify-between items-center">
-      <div></div>
-      <button class="btn-metal" onclick="navigate('not-yet-02')">
-        <span class="btn-metal-face">Next Field Report →</span>
-      </button>
+    <div class="flex justify-end mt-8 mb-4">
+      <button class="ny-nav" onclick="navigate('not-yet-02')">Next Field Report →</button>
     </div>
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
@@ -530,58 +557,57 @@
       <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
     </div>
   </header>
-  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
-    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
-      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
-      <span class="text-cborder">·</span>
-      <span class="text-secondary">AI experiments - documented honestly</span>
-      <span class="text-cborder">·</span>
-      <span class="text-accent font-semibold">FIELD REPORT #002</span>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-16">
+    <div class="ny-card mt-8 lg:mt-10">
+      <div class="ny-topbar">FIELD REPORT #002</div>
+      <div class="ny-body">
+        <h1 class="ny-title">I track my spendings with AI</h1>
+        <p class="ny-subtitle">Here's what actually happened</p>
+        <hr class="ny-hr">
+        <div class="space-y-8">
+          <div>
+            <p class="ny-sh">WHAT I WANTED</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-blue"></span>Track spendings without manually typing every item</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT I DID</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Saved bill &amp; invoice photos in a folder</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Saved bill &amp; invoice photos in a folder</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Used Claude Cowork + gave it access to the folder</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Gave Claude a prompt: extract, categorise, calculate</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Asked for savings rate + advice on where to cut</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT CLAUDE DID</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Read all the bills and extracted the data</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Calculated totals per category + saving rate</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Gave advice on where I spend most</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Done in under 5 minutes</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT IT NEEDS FROM YOU</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Photos of your bills</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>A bit of organisation upfront</li>
+            </ul>
+          </div>
+        </div>
+        <hr class="ny-hr">
+      </div>
+      <div class="ny-bottombar">
+        <span class="ny-brand">NOT YET.</span>
+        <span class="ny-tagline">AI experiments – documented honestly</span>
+      </div>
     </div>
-    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">I track my spendings with AI</h1>
-    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
-    <div class="divider mb-14"></div>
-    <div class="max-w-2xl space-y-12">
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I WANTED</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Track spendings without manually typing every item</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I DID</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Saved bill &amp; invoice photos in a folder</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Used Claude Cowork + gave it access to the folder</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Gave Claude a prompt: extract, categorise, calculate</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Asked for savings rate + advice on where to cut</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT CLAUDE DID</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Read all the bills and extracted the data</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Calculated totals per category + saving rate</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Gave advice on where I spend most</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Done in under 5 minutes</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT IT NEEDS FROM YOU</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Photos of your bills</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>A bit of organisation upfront</li>
-        </ul>
-      </div>
-    </div>
-    <div class="divider mt-16 mb-10"></div>
-    <div class="flex justify-between items-center">
-      <button class="btn-metal" onclick="navigate('not-yet-01')">
-        <span class="btn-metal-face">← Previous Field Report</span>
-      </button>
-      <button class="btn-metal" onclick="navigate('not-yet-03')">
-        <span class="btn-metal-face">Next Field Report →</span>
-      </button>
+    <div class="flex justify-between mt-8 mb-4">
+      <button class="ny-nav" onclick="navigate('not-yet-01')">← Previous Field Report</button>
+      <button class="ny-nav" onclick="navigate('not-yet-03')">Next Field Report →</button>
     </div>
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
@@ -604,77 +630,78 @@
       <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="tlink">LinkedIn</a>
     </div>
   </header>
-  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-24">
-    <div class="pt-10 pb-3 flex flex-wrap items-center gap-3 text-sm font-dm">
-      <span class="text-secondary uppercase tracking-widest font-semibold">NOT YET.</span>
-      <span class="text-cborder">·</span>
-      <span class="text-secondary">AI experiments - documented honestly</span>
-      <span class="text-cborder">·</span>
-      <span class="text-accent font-semibold">FIELD REPORT #003</span>
-    </div>
-    <h1 class="font-syne text-4xl md:text-6xl font-bold text-ctext leading-tight max-w-3xl mt-3 mb-4">
-      300 photos. One supplier code.<br>Two AI tools.
-    </h1>
-    <p class="font-dm text-xl text-dark mb-14">Here's what actually happened</p>
-    <div class="divider mb-14"></div>
-    <div class="max-w-2xl space-y-12">
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">THE TASK</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identify labels from one specific supplier across 300 photos</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Each label has a unique supplier code</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT I DID WITH COPILOT</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Wrote a prompt explaining exactly what to find</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Added a reference photo showing where the code appears</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Uploaded photos manually — max 20 at a time</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Repeated the process in batches</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT WORKED</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identified the right labels with the supplier code</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Saved time vs checking 300 photos manually</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Likely caught labels I would have missed myself</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT DIDN'T</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>20 photo limit — manual batching took time</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Gave extra info I didn't ask for — too much text</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Still had to manually search files by name in the folder</li>
-        </ul>
-      </div>
-      <div>
-        <h2 class="font-syne text-2xl font-bold text-ctext mb-5">WHAT CLAUDE COWORK WOULD HAVE DONE</h2>
-        <ul class="space-y-4">
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Give it folder access — no manual uploading</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Run the prompt across all 300 photos at once</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Return only what I asked — clean, no extra text</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Tell me how many photos matched</li>
-          <li class="flex items-start gap-3 font-dm text-lg text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Sort matching photos to the top of the folder</li>
-        </ul>
-      </div>
-      <div class="card p-10">
-        <p class="slabel mb-4">THE INSIGHT</p>
-        <blockquote class="font-syne text-3xl font-bold text-ctext leading-tight">AI should protect your mental capacity</blockquote>
-        <p class="font-dm text-lg text-dark mt-5 leading-relaxed">Copilot helped. But I was still managing the process. With the right tool + folder access, I run one prompt and move on.</p>
-        <div class="mt-6 flex flex-wrap gap-4 text-sm font-dm text-secondary">
-          <span>Tool Used: Microsoft Copilot</span><span>·</span><span>Tool Wanted: Claude Cowork</span>
+  <main class="px-6 md:px-14 lg:px-20 max-w-screen-xl mx-auto pb-16">
+    <div class="ny-card mt-8 lg:mt-10">
+      <div class="ny-topbar">FIELD REPORT #003</div>
+      <div class="ny-body">
+        <h1 class="ny-title">300 photos. One supplier code<br>Two AI tools.</h1>
+        <p class="ny-subtitle">Here's what actually happened</p>
+        <hr class="ny-hr">
+        <div class="space-y-8">
+          <div>
+            <p class="ny-sh">THE TASK</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-blue"></span>Identify labels from one specific supplier</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-blue"></span>across 300 photos</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-blue"></span>Each label has an unique supplier code</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT I DID WITH COPILOT</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Wrote a prompt explaining exactly what to find</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Added a reference photo showing where the code appears</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Uploaded photos manually — max 20 at a time</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-trans"></span>Repeated the process in batches</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT WORKED</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Identified the right labels with the supplier code</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Saved time vs checking 300 photos manually</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Likely caught labels I would have missed myself</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT DIDN'T</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>20 photo limit — manual batching took time</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Gave extra info I didn't ask for — too much text</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-gray"></span>Still had to manually search files by name in the folder</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-sh">WHAT CLAUDE COWORK WOULD HAVE DONE</p>
+            <ul class="space-y-3">
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Give it folder access — no manual uploading</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Run the prompt across all 300 photos at once</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Return only what I asked — clean, no extra text</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Tell me how many photos matched</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Sort matching photos to the top of the folder</li>
+              <li class="ny-li"><span class="ny-dot ny-dot-pink"></span>Done. Move on to the next task.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="ny-insight-label">THE INSIGHT</p>
+            <h2 class="font-syne font-bold text-white leading-tight mb-4" style="font-size:32px;">AI should protect your mental capacity</h2>
+            <p class="ny-li" style="display:block; margin-bottom:20px;">Copilot helped. But I was still managing the process. With the right tool + folder access, I run one prompt and use my brain for decisions - not for file hunting.</p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tool-badge">Not Yet</span>
+              <span class="tool-badge">Microsoft Copilot</span>
+              <span class="tool-badge tool-badge-accent">Claude Cowork</span>
+            </div>
+          </div>
         </div>
+        <hr class="ny-hr">
+      </div>
+      <div class="ny-bottombar">
+        <span class="ny-brand">NOT YET.</span>
+        <span class="ny-tagline">AI experiments – documented honestly</span>
       </div>
     </div>
-    <div class="divider mt-16 mb-10"></div>
-    <div class="flex justify-between items-center">
-      <button class="btn-metal" onclick="navigate('not-yet-02')">
-        <span class="btn-metal-face">← Previous Field Report</span>
-      </button>
-      <div></div>
+    <div class="flex justify-start mt-8 mb-4">
+      <button class="ny-nav" onclick="navigate('not-yet-02')">← Previous Field Report</button>
     </div>
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
