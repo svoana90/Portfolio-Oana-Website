@@ -46,10 +46,7 @@
       font-family: 'DM Sans', sans-serif;
       color: #262626;
       -webkit-font-smoothing: antialiased;
-      background:
-        radial-gradient(ellipse 1000px 700px at 0% 0%, rgba(255,45,120,.04) 0%, transparent 65%),
-        radial-gradient(ellipse 800px 600px at 100% 90%, rgba(0,0,180,.03) 0%, transparent 65%),
-        #e8e8ea;
+      background: #e8e8ea;
     }
 
     /* ── Pages ── */
@@ -94,7 +91,7 @@
       font-size: 15px; font-weight: 700; color: #fff; cursor: pointer;
       transition: background .2s; position: relative; z-index: 1;
     }
-    .fnav-logo:hover { background: #FF2D78; }
+    .fnav-logo:hover { background: #000; }
     .fnav-item {
       padding: 7px 15px; border-radius: 100px;
       font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
@@ -104,8 +101,8 @@
     }
     .fnav-item:hover { background: rgba(0,0,0,.07); color: #000; }
     .fnav-item:active { transform: scale(.96); }
-    .fnav-item.pink { color: #FF2D78; }
-    .fnav-item:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; }
+    .fnav-item.pink { color: #262626; }
+    .fnav-item:focus-visible { outline: 2px solid #262626; outline-offset: 2px; }
 
     /* ── Black metallic buttons ── */
     .btn-metal {
@@ -125,10 +122,10 @@
       text-shadow: 0 1px 2px rgba(0,0,0,.5); white-space: nowrap;
       transition: background 200ms;
     }
-    .btn-metal:hover { background: linear-gradient(180deg, #FF3D86 0%, #c41455 100%); box-shadow: 0 4px 16px rgba(255,45,120,.38); }
-    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #FF2D78 0%, #d01460 100%); }
+    .btn-metal:hover { background: linear-gradient(180deg, #4a4a4a 0%, #000 100%); box-shadow: 0 4px 16px rgba(0,0,0,.32); }
+    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #3a3a3a 0%, #0a0a0a 100%); }
     .btn-metal:active { transform: translateY(2px) scale(.98); box-shadow: 0 1px 4px rgba(0,0,0,.25); }
-    .btn-metal:focus-visible { outline: 2px solid #FF2D78; outline-offset: 3px; }
+    .btn-metal:focus-visible { outline: 2px solid #262626; outline-offset: 3px; }
 
     /* ── Cards ── */
     .card {
@@ -141,12 +138,12 @@
 
     /* ── Top-bar links ── */
     .tlink {
-      font-family: 'DM Sans', sans-serif; font-size: 18px; color: #262626;
+      font-family: 'DM Sans', sans-serif; font-size: 22px; color: #262626;
       text-decoration: none; border-bottom: 1px solid transparent;
       transition: border-color .2s; padding-bottom: 1px;
     }
     .tlink:hover { border-color: #262626; }
-    .tlink:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; border-radius: 2px; }
+    .tlink:focus-visible { outline: 2px solid #262626; outline-offset: 2px; border-radius: 2px; }
 
     /* ── Experiment cards ── */
     .exp-card {
@@ -155,11 +152,11 @@
     }
     .exp-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 12px 32px rgba(0,0,0,.09), 0 2px 8px rgba(255,45,120,.07), 0 0 0 1px rgba(0,0,0,.05);
+      box-shadow: 0 12px 32px rgba(0,0,0,.10), 0 2px 8px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05);
     }
 
     /* ── Case study hero image ── */
-    .cs-img-wrap { position: relative; overflow: hidden; }
+    .cs-img-wrap { position: relative; overflow: hidden; background: #f5f5f6; }
     .cs-img-wrap img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .cs-img-wrap::after {
       content: ''; position: absolute; inset: 0;
@@ -169,7 +166,7 @@
 
     /* ── Section images ── */
     .section-img {
-      width: 100%; border-radius: 12px; display: block;
+      width: 100%; max-height: 680px; object-fit: contain; border-radius: 12px; display: block;
       box-shadow: 0 4px 24px rgba(0,0,0,.1), 0 1px 4px rgba(0,0,0,.06), 0 0 0 1px rgba(0,0,0,.05);
     }
 
@@ -181,16 +178,16 @@
       transition: color .2s, border-color .2s;
     }
     .snav-link:hover { color: #262626; border-left-color: #d1d1d4; }
-    .snav-link.on { color: #FF2D78; border-left-color: #FF2D78; font-weight: 500; }
+    .snav-link.on { color: #262626; border-left-color: #262626; font-weight: 600; }
 
     /* ── Callout ── */
     .callout {
       display: flex; gap: 10px; padding: 14px 16px;
-      background: rgba(255,45,120,.06); border-left: 3px solid #FF2D78;
+      background: rgba(0,0,0,.04); border-left: 3px solid #d1d1d4;
       border-radius: 0 8px 8px 0;
       font-family: 'DM Sans', sans-serif; font-size: 15px; color: #38383d; line-height: 1.6;
     }
-    .callout-icon { flex-shrink: 0; font-weight: 700; color: #FF2D78; }
+    .callout-icon { flex-shrink: 0; font-weight: 700; color: #38383d; }
 
     /* ── Section label ── */
     .slabel {
@@ -210,7 +207,7 @@
       transition: border-color .2s, box-shadow .2s; outline: none;
     }
     .pinput::placeholder { color: #9b9ba0; }
-    .pinput:focus { border-color: #FF2D78; box-shadow: 0 0 0 3px rgba(255,45,120,.1); }
+    .pinput:focus { border-color: #262626; box-shadow: 0 0 0 3px rgba(38,38,38,.1); }
 
     /* ── Scroll-to-top ── */
     .stt {
@@ -223,7 +220,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,.18);
     }
     .stt.show { opacity: 1; transform: translateY(0); }
-    .stt:hover { background: #FF2D78; transform: translateY(-2px); }
+    .stt:hover { background: #000; transform: translateY(-2px); }
     .stt:active { transform: translateY(0); }
 
     /* ── Not Yet card ── */
@@ -242,30 +239,30 @@
     .ny-sh { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,0.65); margin-bottom: 14px; margin-top: 0; }
     .ny-li { display: flex; align-items: flex-start; gap: 12px; font-family: 'DM Sans', sans-serif; font-size: 16px; color: rgba(255,255,255,0.82); line-height: 1.55; }
     .ny-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
-    .ny-dot-pink { background: #FF2D78; }
+    .ny-dot-pink { background: rgba(255,255,255,0.75); }
     .ny-dot-blue { background: #2563eb; }
     .ny-dot-gray { background: rgba(255,255,255,0.32); }
-    .ny-dot-trans { background: rgba(255,45,120,0.35); border: 1.5px solid rgba(255,45,120,0.55); }
+    .ny-dot-trans { background: rgba(255,255,255,0.18); border: 1.5px solid rgba(255,255,255,0.38); }
     .ny-bottombar { background: #FF2D78; padding: 14px 32px; display: flex; justify-content: space-between; align-items: center; }
     .ny-brand { font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 800; color: #fff; letter-spacing: -0.01em; }
     .ny-tagline { font-family: 'DM Sans', sans-serif; font-size: 13px; color: rgba(255,255,255,0.8); }
     .ny-nav { font-family: 'DM Sans', sans-serif; font-size: 16px; color: #262626; cursor: pointer; background: none; border: none; text-decoration: none; transition: color .2s; padding: 0; }
-    .ny-nav:hover { color: #FF2D78; }
-    .ny-nav:focus-visible { outline: 2px solid #FF2D78; outline-offset: 2px; border-radius: 2px; }
-    .ny-insight-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #FF2D78; margin-bottom: 10px; }
+    .ny-nav:hover { color: #000; }
+    .ny-nav:focus-visible { outline: 2px solid #262626; outline-offset: 2px; border-radius: 2px; }
+    .ny-insight-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 10px; }
     .tool-badge { display: inline-block; padding: 4px 13px; border-radius: 100px; font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500; background: rgba(255,255,255,0.14); color: rgba(255,255,255,0.75); }
-    .tool-badge-accent { background: #FF2D78; color: #fff; }
+    .tool-badge-accent { background: rgba(255,255,255,0.22); color: #fff; border: 1px solid rgba(255,255,255,0.35); }
 
     /* ── Badge two lines ── */
     .badge-two-line {
       display: inline-block;
-      background: #FF2D78; color: #fff;
+      background: none; color: #262626;
       font-family: 'DM Sans', sans-serif; font-size: 14px; font-weight: 500;
-      padding: 10px 18px; border-radius: 12px; line-height: 1.5;
+      padding: 0; border-radius: 0; line-height: 1.5;
     }
 
     /* ── Stat big ── */
-    .stat-big { font-family: 'Syne',sans-serif; font-size: 52px; font-weight: 700; color: #FF2D78; line-height: 1; }
+    .stat-big { font-family: 'Syne',sans-serif; font-size: 52px; font-weight: 700; color: #262626; line-height: 1; }
 
     @media (max-width: 640px) {
       .fnav { width: calc(100% - 24px); justify-content: center; top: 12px; }
@@ -326,12 +323,9 @@
       <p class="mt-7 text-xl md:text-2xl text-ctext font-dm leading-relaxed max-w-2xl">
         I take over broken systems, diagnose what's actually wrong, and redesign them to work in real operational environments.
       </p>
-      <p class="mt-3 text-base md:text-lg text-secondary font-dm">
-        Based in Romania, working internationally · Open to remote opportunities and relocation within Europe
-      </p>
       <div class="mt-8">
         <div class="badge-two-line">
-          Designed by me.<br>Coded by Claude AI.
+          <span style="color:#FF2D78;">Designed by me.</span><br><span style="color:#262626;">Coded by Claude AI.</span>
         </div>
       </div>
     </section>
@@ -348,10 +342,9 @@
         <div class="flex flex-col lg:flex-row">
           <div class="lg:w-[48%] min-h-[300px] lg:min-h-[480px] cs-img-wrap">
             <img
-              src="https://s3-alpha-sig.figma.com/img/8cd0/7d8c/81384dc7483171ea27bdf816a8307599?Expires=1780272000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=mSsgKSBoTbMQx0rB4gDaPqQDjQCq55YMDtDxynfCiC~s59ZKX3kwKqopctNCQd5pB3IVYv-0AyxD7jfTx72MJbf4-I4mlGMy52wxvgz6FA08g0UeRGFLCevbCVV-tLi-ARMwxckakLJ5CW-u9gDt2F~rheQKdX6Okr2yJBgEZXK~uOBZxUglCX-hMRGB9MORKH8Nl2MNZtwqSirELwq19-YHkU-L1GysB8TRl58bVxEnyyxmzI9sn2i7N~sRz8arRb36mPojbDgRl~ZD1G9LmXp-6wwmr2NrbOJ5lKSN2NbQ4L00laX~GchXCi0PwfWFGLGY7R9MfLClOeIOsQy-Vg__"
+              src="imgs/frame-47.png"
               alt="Counterfeit detection system"
               style="min-height:300px;"
-              onerror="this.src='https://placehold.co/760x480/262626/6e6e73?text=Case+Study'"
             >
           </div>
           <div class="lg:w-[52%] p-8 lg:p-14 flex flex-col justify-between">
@@ -361,16 +354,16 @@
               </h3>
               <ul class="space-y-4">
                 <li class="flex items-center gap-3 font-dm text-lg text-dark">
-                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Diagnosed 5 Root Causes
+                  <span class="w-2 h-2 rounded-full bg-ctext flex-shrink-0"></span>Diagnosed 5 Root Causes
                 </li>
                 <li class="flex items-center gap-3 font-dm text-lg text-dark">
-                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Designed 3 Parallel Solutions
+                  <span class="w-2 h-2 rounded-full bg-ctext flex-shrink-0"></span>Designed 3 Parallel Solutions
                 </li>
                 <li class="flex items-center gap-3 font-dm text-lg text-dark">
-                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>Managed Organisational Complexity
+                  <span class="w-2 h-2 rounded-full bg-ctext flex-shrink-0"></span>Managed Organisational Complexity
                 </li>
                 <li class="flex items-center gap-3 font-dm text-lg text-dark">
-                  <span class="w-2 h-2 rounded-full bg-accent flex-shrink-0"></span>€1.4B Protected Real Value
+                  <span class="w-2 h-2 rounded-full bg-ctext flex-shrink-0"></span>€1.4B Protected Real Value
                 </li>
               </ul>
             </div>
@@ -400,9 +393,9 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-01')">
           <p class="slabel mb-4">Field Report #001</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I built an <span class="text-accent">AI Agent</span> to check labelling compliance at work
+            I built an <span class="font-semibold">AI Agent</span> to check labelling compliance at work
           </h3>
-          <p class="font-dm text-lg text-dark leading-relaxed">
+          <p class="font-dm text-f-body text-dark leading-relaxed">
             Reads emails, analyses designs, identifies issues, drafts responses.
           </p>
         </div>
@@ -410,9 +403,9 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-02')">
           <p class="slabel mb-4">Field Report #002</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I track my spending <span class="text-accent">with AI</span>
+            I track my spending <span class="font-semibold">with AI</span>
           </h3>
-          <p class="font-dm text-lg text-dark leading-relaxed">
+          <p class="font-dm text-f-body text-dark leading-relaxed">
             Upload bill photos, get categorised expenses, savings rate, and spending advice—no manual data entry required
           </p>
         </div>
@@ -420,9 +413,9 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-03')">
           <p class="slabel mb-4">Field Report #003</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            300 photos. One supplier code. <span class="text-accent">Two AI</span> tools
+            300 photos. One supplier code. <span class="font-semibold">Two AI</span> tools
           </h3>
-          <p class="font-dm text-lg text-dark leading-relaxed">
+          <p class="font-dm text-f-body text-dark leading-relaxed">
             Fast identification, but manual batching and file management ate the time savings. Learned: AI tools need folder access to truly scale.
           </p>
         </div>
@@ -487,7 +480,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <div id="page-not-yet-01" class="page">
   <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
-    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:opacity-70 transition-opacity focus-visible:outline-none"
             style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
     <div class="flex items-center gap-6">
       <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
@@ -550,7 +543,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <div id="page-not-yet-02" class="page">
   <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
-    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:opacity-70 transition-opacity focus-visible:outline-none"
             style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
     <div class="flex items-center gap-6">
       <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
@@ -623,7 +616,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <div id="page-not-yet-03" class="page">
   <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
-    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:opacity-70 transition-opacity focus-visible:outline-none"
             style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
     <div class="flex items-center gap-6">
       <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
@@ -717,7 +710,7 @@
 <!-- ══════════════════════════════════════════════ -->
 <div id="page-public-case-study" class="page">
   <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
-    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+    <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:opacity-70 transition-opacity focus-visible:outline-none"
             style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
     <div class="flex items-center gap-6">
       <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
@@ -760,15 +753,15 @@
         <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Background</h2>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-4">This is a global authentication initiative protecting billions in annual supply chain value.</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-6">The system includes a Mobile App used by field inspectors, a web platform for the identification team, and Counterfeit Analysis—an ML-powered tool that detects counterfeit products from uploaded photos.</p>
-        <p class="font-syne font-bold text-ctext mb-3">My work:</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">My work:</p>
         <ul class="space-y-2 mb-6">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Drive product evolution of the counterfeit detection ecosystem.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identify system gaps between operational reality and technical assumptions.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Define integration strategy across ML systems, rule engines, and enterprise databases.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Coordinate vendor evaluation and technical feasibility discussions.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Redesign workflows and UX based on field-user behaviour.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Prioritize phased delivery under budget and organizational constraints.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Align stakeholders across IT, Legal, Logistics, and Product teams.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Drive product evolution of the counterfeit detection ecosystem.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Identify system gaps between operational reality and technical assumptions.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Define integration strategy across ML systems, rule engines, and enterprise databases.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Coordinate vendor evaluation and technical feasibility discussions.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Redesign workflows and UX based on field-user behaviour.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Prioritize phased delivery under budget and organizational constraints.</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Align stakeholders across IT, Legal, Logistics, and Product teams.</li>
         </ul>
         <p class="font-dm text-f-body text-dark leading-relaxed">The team includes compliance, legal, technical, and operational stakeholders. Together, we're protecting global markets.</p>
       </section>
@@ -800,19 +793,19 @@
           <div class="card p-7">
             <h3 class="font-syne text-xl font-bold text-ctext mb-4">Challenges</h3>
             <ul class="space-y-3">
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Detection engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>System fragmentation: Mobile app isolated from authoritative product database; only 30% data access.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>UX friction: Users complained app was "too slow," "too complex," "not intuitive"—eroding trust.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Organisational blockers: Vendor coordination impossible without contracts; escalations hit limits.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Detection engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>System fragmentation: Mobile app isolated from authoritative product database; only 30% data access.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>UX friction: Users complained app was "too slow," "too complex," "not intuitive"—eroding trust.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Organisational blockers: Vendor coordination impossible without contracts; escalations hit limits.</li>
             </ul>
           </div>
           <div class="card p-7">
             <h3 class="font-syne text-xl font-bold text-ctext mb-4">Solutions</h3>
             <ul class="space-y-3">
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>System 1: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>System 2 layer: Add encryption as alternative authentication (independent of serialisation).</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Phased UX redesign: Phase 1 (quick wins: clearer hierarchy, missing actions). Phase 2 (full simplification—ship within budget constraints).</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Stakeholder alignment: Mapped hidden stakeholders; ran workshops to align on changes.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>System 1: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>System 2 layer: Add encryption as alternative authentication (independent of serialisation).</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Phased UX redesign: Phase 1 (quick wins: clearer hierarchy, missing actions). Phase 2 (full simplification—ship within budget constraints).</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Stakeholder alignment: Mapped hidden stakeholders; ran workshops to align on changes.</li>
             </ul>
           </div>
         </div>
@@ -822,22 +815,31 @@
         <p class="slabel mb-3">Mobile APP: Detection Engine</p>
         <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Detection Engine build on incomplete assumptions</h2>
 
-        <p class="font-syne font-bold text-ctext mb-2">Detection Engine "Perfect Life"</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-2">Detection Engine "Perfect Life"</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-6">The detection engine was built on an assumption: that complete product identification data would be universally available across the supply chain.</p>
 
-        <p class="font-syne font-bold text-ctext mb-3">Detection Engine "Real Life"</p>
-        <ul class="space-y-2 mb-8">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Legacy products:</strong> Many items in circulation lack modern identification markers.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Inconsistent adoption:</strong> Even when identification systems exist, implementation varies.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Data availability gaps:</strong> Significant portions of the supply chain lack complete data.</li>
-        </ul>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Detection Engine "Real Life"</p>
+        <div class="space-y-3 mb-8">
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Legacy products:</span>
+            <span>Many items in circulation lack modern identification markers.</span>
+          </div>
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Inconsistent adoption:</span>
+            <span>Even when identification systems exist, implementation varies.</span>
+          </div>
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Data availability gaps:</span>
+            <span>Significant portions of the supply chain lack complete data.</span>
+          </div>
+        </div>
 
-        <p class="font-syne font-bold text-ctext mb-3">Why the original approach failed</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Why the original approach failed</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-4">When I took over, this challenge had been identified by my predecessor. The initial strategy was to pull comprehensive product data from the identification system.</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-4">However, investigation revealed the system only generates codes—it doesn't store product information. The strategy was based on false assumptions about system capabilities.</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-8">During stakeholder alignment sessions, the operations team suggested connecting directly to the master reference database instead—the actual authoritative source.</p>
 
-        <p class="font-syne font-bold text-ctext mb-2">Lessons</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-2">Lessons</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-7">Don't assume what systems can do. Investigate the actual capabilities.</p>
 
         <div class="callout"><span class="callout-icon">!</span><span>For a comprehensive understanding of how the detection engine limitation was diagnosed and managed, including the technical investigation and stakeholder discovery process, please refer to the protected case study.</span></div>
@@ -852,36 +854,52 @@
           <div class="card p-7">
             <h3 class="font-syne text-lg font-bold text-ctext mb-4">Users' Response</h3>
             <ul class="space-y-2 font-dm text-base text-dark">
-              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Interface Not Intuitive</li>
-              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Excessive information on screen</li>
-              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Workflow too lengthy and time-consuming</li>
-              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Reliability concerns (confirming detection engine issues)</li>
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Interface Not Intuitive</li>
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Excessive information on screen</li>
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Workflow too lengthy and time-consuming</li>
+              <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Reliability concerns (confirming detection engine issues)</li>
             </ul>
           </div>
           <div class="card p-7">
             <h3 class="font-syne text-lg font-bold text-ctext mb-4">UX Audit</h3>
             <ul class="space-y-3">
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Main screen overwhelmed with features: 7+ information categories with no clear hierarchy. The core goal was to analyze as many items as possible, but the interface gave equal weight to all features.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Disconnected information: Product data and analysis results were in separate sections with no visual connection—users couldn't trace which results matched which products.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Redundant navigation: Workflows required unnecessary steps and confirmation screens.</li>
-              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Missing resolution action: The completion action was buried in an optional initial step—resulting in unresolved cases piling up.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Main screen overwhelmed with features: 7+ information categories with no clear hierarchy. The core goal was to analyze as many items as possible, but the interface gave equal weight to all features.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Disconnected information: Product data and analysis results were in separate sections with no visual connection—users couldn't trace which results matched which products.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Redundant navigation: Workflows required unnecessary steps and confirmation screens.</li>
+              <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Missing resolution action: The completion action was buried in an optional initial step—resulting in unresolved cases piling up.</li>
             </ul>
           </div>
         </div>
 
-        <p class="slabel mb-3">Simplifying the Workflow</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Simplifying the Workflow</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-6">My redesign focused on streamlining the analysis process and reducing complexity.</p>
         <img src="imgs/flow-proposed-pub.png" alt="Proposed scanning flow" class="section-img mb-7">
         <div class="callout mb-7"><span class="callout-icon">!</span><span>For a comprehensive understanding of how the detection engine limitation was diagnosed and managed, including the technical investigation and stakeholder discovery process, please refer to the protected case study.</span></div>
 
-        <p class="slabel mb-3">UI: From Complexity to Clarity</p>
-        <p class="font-syne font-bold text-ctext mb-3">Constrains I am working within:</p>
-        <ul class="space-y-3 mb-7">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Budget:</strong> given to this constrain, I design a 2-phase UX rollout.</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Team Lead resistance:</strong> Initially said UX was fine, app didn't need "fancy UI"</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>My response:</strong> Showed user survey data, framed as usability not aesthetics</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Result:</strong> Agreed to 2-phase UX rollout.</li>
-        </ul>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">UI: From Complexity to Clarity</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Constrains I am working within:</p>
+        <div class="space-y-3 mb-7">
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Budget:</span>
+            <span>given to this constrain, I design a 2-phase UX rollout.</span>
+          </div>
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Team Lead resistance:</span>
+            <span>Initially said UX was fine, app didn't need "fancy UI"</span>
+          </div>
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">My response:</span>
+            <span>Showed user survey data, framed as usability not aesthetics</span>
+          </div>
+          <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+            <span class="font-bold text-ctext">Result:</span>
+            <span>Agreed to 2-phase UX rollout.</span>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4 mb-7">
+          <img src="imgs/case-scan-1.png" alt="Case and Scan 1" class="section-img">
+          <img src="imgs/case-scan-2.png" alt="Case and Scan 2" class="section-img">
+        </div>
         <div class="callout"><span class="callout-icon">!</span><span>For detailed before/after comparisons, wireframe progression (Phase 1 and Phase 2 designs), and user testing results, please refer to the protected case study.</span></div>
       </section>
 
@@ -889,20 +907,20 @@
         <p class="slabel mb-3">Additional Security</p>
         <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Managing External Vendor Coordination</h2>
 
-        <p class="font-syne font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Debt</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Additional Security Feature: Building Defence-in-Debt</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-2">ASF is an encryption solution being integrated to add invisible security markers to labels.</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-8">ASF will be integrated into the Mobile APP, allowing field inspectors to use encryption-based authentication alongside the existing validation system when scanning labels.</p>
 
-        <p class="font-syne font-bold text-ctext mb-3">Third-Party Integration Constraints</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Third-Party Integration Constraints</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-8">Implementing the encryption solution required coordinating between multiple external vendors. Organisational policy required formal governance structures rather than direct vendor communication, creating workflow constraints.</p>
 
-        <p class="font-syne font-bold text-ctext mb-3">How I Managed It</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">How I Managed It</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-3">I accepted the organisational constraint and adapted:</p>
         <ul class="space-y-2 mb-4">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Documented all technical questions clearly to minimise misunderstandings</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Tracked feasibility blockers explicitly so leadership owned the delay decision</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Focused my energy on parallel work-streams: maintained momentum on Master Data integration and UX redesign (independent initiatives)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Kept the project moving despite the vendor coordination limitation</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Documented all technical questions clearly to minimise misunderstandings</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Tracked feasibility blockers explicitly so leadership owned the delay decision</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Focused my energy on parallel work-streams: maintained momentum on Master Data integration and UX redesign (independent initiatives)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Kept the project moving despite the vendor coordination limitation</li>
         </ul>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-7"><strong>Key Learning:</strong> Not all blockers are solvable by individual PMs. Some require leadership decisions. My job was to make constraints visible, propose solutions, and execute within the boundaries leadership set.</p>
 
@@ -913,27 +931,27 @@
         <p class="slabel mb-3">Measurements</p>
         <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
 
-        <p class="font-syne font-bold text-ctext mb-3">Current Implementation Status:</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Current Implementation Status:</p>
         <ul class="space-y-2 mb-8">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing (Phase 2 decision pending Phase 1 results)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Encryption Layer: Technical feasibility review in progress (decision expected Q2 2026)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>ML Verification: MVP Go Live (expected Q3 2026)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing (Phase 2 decision pending Phase 1 results)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Encryption Layer: Technical feasibility review in progress (decision expected Q2 2026)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>ML Verification: MVP Go Live (expected Q3 2026)</li>
         </ul>
 
-        <p class="font-syne font-bold text-ctext mb-2">Business Context</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-2">Business Context</p>
         <p class="font-dm text-f-body text-dark leading-relaxed mb-8">The system protects billions in annual supply chain value. Current impact: significant detection gaps due to data fragmentation.</p>
 
-        <p class="font-syne font-bold text-ctext mb-3">Matrix Being Tracked</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Matrix Being Tracked</p>
         <ul class="space-y-3 mb-8">
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>User Efficiency:</strong> Analysis volume per team member (baseline establishing → target improvement through simplified workflow)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Detection Capability:</strong> Expected improvement from data integration (50%+) and encryption layer (90%+ for secured products)</li>
-          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Quality vs. Volume:</strong> Trade-off analysis—encryption verification adds process step but improves accuracy; UX simplification maintains overall efficiency</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span><strong>User Efficiency:</strong> Analysis volume per team member (baseline establishing → target improvement through simplified workflow)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span><strong>Detection Capability:</strong> Expected improvement from data integration (50%+) and encryption layer (90%+ for secured products)</li>
+          <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span><strong>Quality vs. Volume:</strong> Trade-off analysis—encryption verification adds process step but improves accuracy; UX simplification maintains overall efficiency</li>
         </ul>
 
-        <p class="font-syne font-bold text-ctext mb-3">Timeline</p>
+        <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Timeline</p>
         <ul class="space-y-3 mb-7 font-dm text-f-body text-dark">
-          <li class="flex items-start gap-4"><span class="text-accent font-semibold min-w-[100px]">Q2 2026</span>Data integration ships + Phase 1 UX results validated</li>
+          <li class="flex items-start gap-4"><span class="font-bold text-ctext min-w-[100px]">Q2 2026</span>Data integration ships + Phase 1 UX results validated</li>
           <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q2/Q3 2026</span>Encryption layer technical decision → integration planning</li>
           <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q3 2026</span>ML verification tool launch</li>
           <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q1 2027</span>Encryption layer deployment</li>
@@ -974,7 +992,7 @@
       <p class="font-dm text-base text-secondary mb-8">Password-protected for confidentiality.</p>
       <input type="password" id="pinput" class="pinput mb-2" placeholder="Enter password"
              onkeydown="if(event.key==='Enter')checkPw()">
-      <p id="perror" class="font-dm text-sm text-accent mb-4 hidden">Incorrect password. Please try again.</p>
+      <p id="perror" class="font-dm text-sm text-red-600 mb-4 hidden">Incorrect password. Please try again.</p>
       <button class="btn-metal w-full mb-3" style="border-radius:12px;" onclick="checkPw()">
         <span class="btn-metal-face" style="width:100%; border-radius:10px;">Access Case Study</span>
       </button>
@@ -987,7 +1005,7 @@
   <!-- Protected content -->
   <div id="prot-content" class="hidden">
     <header class="px-6 md:px-14 lg:px-20 pt-6 pb-2 flex items-center justify-between max-w-screen-xl mx-auto">
-      <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:text-accent transition-colors focus-visible:outline-none"
+      <button onclick="navigate('home')" class="font-syne font-bold text-ctext hover:opacity-70 transition-opacity focus-visible:outline-none"
               style="font-size:18px; background:none; border:none; cursor:pointer;">Oana Serban</button>
       <div class="flex items-center gap-6">
         <a href="mailto:svoana@yahoo.com" class="tlink">e-mail</a>
@@ -1001,8 +1019,8 @@
         Building a reliable counterfeit detection system at scale
       </h1>
       <p class="font-dm text-xl text-dark max-w-2xl mb-5">Architecting a Two-Layer AI Authentication System to protect €1.4B</p>
-      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-dm text-sm text-accent font-medium border border-accent/30 bg-accent/5">
-        <span class="w-2 h-2 rounded-full bg-accent"></span>Confidential — Full Version
+      <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-dm text-sm text-dark font-medium border border-cborder bg-base">
+        <span class="w-2 h-2 rounded-full bg-dark"></span>Confidential — Full Version
       </span>
     </div>
     <div class="divider"></div>
@@ -1030,15 +1048,15 @@
           <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Background</h2>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-4">This is a global anti-counterfeiting initiative protecting €1.4B annually.</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-6">The system includes a Mobile App used by field inspectors, a web platform for the identification team, and Counterfeit Analysis—an ML-powered tool that detects counterfeit products from uploaded photos.</p>
-          <p class="font-syne font-bold text-ctext mb-3">My Responsibilities:</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">My Responsibilities:</p>
           <ul class="space-y-2">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Drive product evolution of the counterfeit detection ecosystem.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Identify system gaps between operational reality and technical assumptions.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Define integration strategy across ML systems, rule engines, and enterprise databases.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Coordinate vendor evaluation and technical feasibility discussions.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Redesign workflows and UX based on field-user behaviour.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Prioritise phased delivery under budget and organisational constraints.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Align stakeholders across IT, Legal, Logistics, and Product teams.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Drive product evolution of the counterfeit detection ecosystem.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Identify system gaps between operational reality and technical assumptions.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Define integration strategy across ML systems, rule engines, and enterprise databases.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Coordinate vendor evaluation and technical feasibility discussions.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Redesign workflows and UX based on field-user behaviour.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Prioritise phased delivery under budget and organisational constraints.</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Align stakeholders across IT, Legal, Logistics, and Product teams.</li>
           </ul>
         </section>
 
@@ -1100,19 +1118,19 @@
             <div class="card p-7">
               <h3 class="font-syne text-xl font-bold text-ctext mb-4">Challenges</h3>
               <ul class="space-y-3">
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Rule engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>System fragmentation: Mobile app isolated from authoritative product database; only 30% data access.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>UX friction: Users complained app was "too slow," "too complex," "not intuitive"—eroding trust.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Organisational blockers: Vendor coordination impossible without contracts; escalations hit limits.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Rule engine built on false assumption: Expected all labels to have unique serialisation codes. In reality, 70% of supply chain lacks this data.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>System fragmentation: Mobile app isolated from authoritative product database; only 30% data access.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>UX friction: Users complained app was "too slow," "too complex," "not intuitive"—eroding trust.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Organisational blockers: Vendor coordination impossible without contracts; escalations hit limits.</li>
               </ul>
             </div>
             <div class="card p-7">
               <h3 class="font-syne text-xl font-bold text-ctext mb-4">Solutions</h3>
               <ul class="space-y-3">
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Master Data integration: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>ASF security layer: Add encryption to labels as alternative authentication (independent of serialisation).</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Phased UX redesign: Phase 1 (quick wins: clearer hierarchy, missing actions). Phase 2 (full simplification—ship within budget constraints).</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Stakeholder alignment: Mapped hidden stakeholders (Logistics, Legal, IT); ran workshops to align on label changes.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Master Data integration: Connect app directly to authoritative product database → expand validation from 30% to 70%+ coverage.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>ASF security layer: Add encryption to labels as alternative authentication (independent of serialisation).</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Phased UX redesign: Phase 1 (quick wins: clearer hierarchy, missing actions). Phase 2 (full simplification—ship within budget constraints).</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Stakeholder alignment: Mapped hidden stakeholders (Logistics, Legal, IT); ran workshops to align on label changes.</li>
               </ul>
             </div>
           </div>
@@ -1127,30 +1145,42 @@
             <p class="font-dm text-lg text-dark">of labels in the active supply chain lack the serialisation the rule engine expects</p>
           </div>
 
-          <p class="font-syne font-bold text-ctext mb-2">Rule Engine "Perfect Life"</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-2">Rule Engine "Perfect Life"</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-6">Built on flawed assumption: that all labels would contain DMC (Data Matrix Code) serialisation — a unique code generated when suppliers print information on blank labels using ABC printing system.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">Rule Engine "Real Life"</p>
-          <ul class="space-y-2 mb-8">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Pre-DMC era:</strong> Millions of existing labels in the supply chain have no serialisation.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>DMC without consistency:</strong> Even in the ABC system, not all suppliers use the ABC system.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Online ABC version:</strong> Prints DMC serialised.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Offline ABC Version:</strong> Cannot print DMC; only sends supplier code to the system.</li>
-          </ul>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Rule Engine "Real Life"</p>
+          <div class="space-y-3 mb-8">
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Pre-DMC era:</span>
+              <span>Millions of existing labels in the supply chain have no serialisation.</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">DMC without consistency:</span>
+              <span>Even in the ABC system, not all suppliers use the ABC system.</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Online ABC version:</span>
+              <span>Prints DMC serialised.</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Offline ABC Version:</span>
+              <span>Cannot print DMC; only sends supplier code to the system.</span>
+            </div>
+          </div>
 
-          <p class="font-syne font-bold text-ctext mb-3">Why ABC was not the answer</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Why ABC was not the answer</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">When I took over, the challenge was already discovered by my predecessor. On that time the strategy was to pull additional product info (PN, description, country of origin) from ABC. However, when I investigated, I discovered ABC doesn't store this data—it only generates codes. The original plan was built on a false assumption about system capabilities.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">The Stakeholder Discovery</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">The Stakeholder Discovery</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">While investigating ABC, I realised there was no stakeholder map. I discovered that Logistics owned both the Print Database and the ABC system itself. They were critical to any solution but they were not deeply involved. I ran 2 workshops with them to understand their constraints and needs.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">Master Data as the Solution</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Master Data as the Solution</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">During a workshop with the Logistics team, they suggested connecting Mobile APP directly to Master Data instead. I approached the Master Data team, got API approval, and worked with IT Supplier to integrate Master Data into the Mobile APP.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">Better Detection, Not Perfect Detection</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Better Detection, Not Perfect Detection</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">Master Data integration helps identify suspicious labels without relying on serialization codes. While counterfeiters are skilled, this approach improves detection chances by approximately 50%.</p>
 
-          <p class="font-syne font-bold text-ctext mb-2">Lessons</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-2">Lessons</p>
           <p class="font-dm text-f-body text-dark leading-relaxed">Don't assume what systems can do. Investigate the actual capabilities.</p>
         </section>
 
@@ -1163,19 +1193,19 @@
             <div class="card p-7">
               <h3 class="font-syne text-lg font-bold text-ctext mb-4">Users' Response</h3>
               <ul class="space-y-2 font-dm text-base text-dark">
-                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>App Not Intuitive</li>
-                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Too much text</li>
-                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Scan Flow is too long</li>
-                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Not reliable — confirming rule engine issues</li>
+                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>App Not Intuitive</li>
+                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Too much text</li>
+                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Scan Flow is too long</li>
+                <li class="flex items-start gap-3"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Not reliable — confirming rule engine issues</li>
               </ul>
             </div>
             <div class="card p-7">
               <h3 class="font-syne text-lg font-bold text-ctext mb-4">UX Audit</h3>
               <ul class="space-y-3">
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Main screen had 5 tabs (Label Verification, Results, Scans, Legal, User Manual) with no information hierarchy; the core goal was to scan as many labels as possible, but the interface prioritised displaying every possible option.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Cases and scans were stored in different tabs (Label Verification vs. Results) with no visual connection—users didn't know which scans belonged to which case. A case can have more scans without any UI connection between Case and Scans.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Scanning required multiple screens and redundant clicks.</li>
-                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>No "Close Case" button in the scan flow; the close action was buried at the beginning when adding user data—resulting in all cases showing as "Open" regardless of actual status.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Main screen had 5 tabs (Label Verification, Results, Scans, Legal, User Manual) with no information hierarchy; the core goal was to scan as many labels as possible, but the interface prioritised displaying every possible option.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Cases and scans were stored in different tabs (Label Verification vs. Results) with no visual connection—users didn't know which scans belonged to which case. A case can have more scans without any UI connection between Case and Scans.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Scanning required multiple screens and redundant clicks.</li>
+                <li class="flex items-start gap-3 font-dm text-base text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>No "Close Case" button in the scan flow; the close action was buried at the beginning when adding user data—resulting in all cases showing as "Open" regardless of actual status.</li>
               </ul>
             </div>
           </div>
@@ -1204,39 +1234,55 @@
         <section id="prot-ui">
           <p class="slabel mb-3">UI</p>
           <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">From 5 tabs to Focused Interface</h2>
-          <p class="font-syne font-bold text-ctext mb-3">Constrains I am working within:</p>
-          <ul class="space-y-3 mb-7">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Budget:</strong> given to this constrain, I design a 2-phase UX rollout.</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>Team Lead resistance:</strong> Initially said UX was fine, app didn't need "fancy UI"</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span><strong>My response:</strong> Showed user survey data, framed as usability not aesthetics</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span><strong>Result:</strong> Agreed to 2-phase UX rollout.</li>
-          </ul>
-          <img src="imgs/app-screens-03.png" alt="Redesigned app UI screens" class="section-img">
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Constrains I am working within:</p>
+          <div class="space-y-3 mb-7">
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Budget:</span>
+              <span>given to this constrain, I design a 2-phase UX rollout.</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Team Lead resistance:</span>
+              <span>Initially said UX was fine, app didn't need "fancy UI"</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">My response:</span>
+              <span>Showed user survey data, framed as usability not aesthetics</span>
+            </div>
+            <div class="grid grid-cols-[260px,1fr] gap-x-8 items-start font-dm text-f-body text-dark leading-relaxed">
+              <span class="font-bold text-ctext">Result:</span>
+              <span>Agreed to 2-phase UX rollout.</span>
+            </div>
+          </div>
+          <div class="grid grid-cols-3 gap-4 mt-7">
+            <img src="imgs/case-scan-1.png" alt="Case and Scan 1" class="section-img">
+            <img src="imgs/case-scan-2.png" alt="Case and Scan 2" class="section-img">
+            <img src="imgs/case-scan-3.png" alt="Case and Scan 3" class="section-img">
+          </div>
         </section>
 
         <section id="prot-additional">
           <p class="slabel mb-3">Additional Security</p>
           <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">ASF Integration: The 4-Month Delay and How I Managed It</h2>
 
-          <p class="font-syne font-bold text-ctext mb-3">Additional Security Feature: Building Defence-in-Debt</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Additional Security Feature: Building Defence-in-Debt</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-2">ASF is an encryption solution being integrated to add invisible security markers to labels.</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">ASF will be integrated into the Mobile APP, allowing field inspectors to use encryption-based authentication alongside the existing validation system when scanning labels.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">The ASF Escalation Challenge</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">The ASF Escalation Challenge</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-4">When I took over, NDAs were already signed with 2 potential ASF suppliers, but technical feasibility remained unclear. The core blocker: the ASF suppliers and the Mobile APP IT supplier needed to coordinate on technical requirements, but organisational policy prevented them from communicating directly without a contract between them.</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-8">I escalated this issue twice—first to my team lead, then to the IT lead. Both times, I requested that legal facilitate direct communication or contract negotiation. Leadership's decision: "Work within the constraints you have." This meant I became the intermediary, passing technical questions back and forth via email between vendors.</p>
 
-          <p class="font-syne font-bold text-ctext mb-3">The Impact &amp; How I Managed It</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">The Impact &amp; How I Managed It</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-3">This constraint cost us approximately 4 months of delay. Rather than direct conversation (1-2 weeks), every technical question about Mobile APP integration required email rounds, clarification requests, and reinterpretation.</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-3">I accepted the organisational constraint and adapted:</p>
           <ul class="space-y-2 mb-8">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Documented all technical questions clearly to minimise misunderstandings</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Tracked feasibility blockers explicitly so leadership owned the delay decision</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Focused my energy on parallel work-streams (Master Data integration, UX redesign) that didn't depend on ASF</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Kept the project moving despite the vendor coordination limitation</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Documented all technical questions clearly to minimise misunderstandings</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Tracked feasibility blockers explicitly so leadership owned the delay decision</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Focused my energy on parallel work-streams (Master Data integration, UX redesign) that didn't depend on ASF</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Kept the project moving despite the vendor coordination limitation</li>
           </ul>
 
-          <p class="font-syne font-bold text-ctext mb-3">Early Detection: Starting with ASF Authentication</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Early Detection: Starting with ASF Authentication</p>
           <p class="font-dm text-f-body text-dark leading-relaxed">The scanning workflow now starts with ASF verification—inspectors check the encryption layer first, providing immediate authentication before proceeding with label validation.</p>
         </section>
 
@@ -1244,43 +1290,43 @@
           <p class="slabel mb-3">Measurements</p>
           <h2 class="font-syne text-f-title1 font-bold text-ctext mb-6">Timeline &amp; Measurements</h2>
 
-          <p class="font-syne font-bold text-ctext mb-4">Current Implementation Status:</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-4">Current Implementation Status:</p>
           <ul class="space-y-2 mb-8">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing (Phase 2 decision pending Phase 1 results)</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>ASF Integration: Technical feasibility review in progress (decision expected Q2 2026)</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Counterfeit Analysis: MVP Go Live (expected Q3 2026)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Master Data Integration: In progress (expected Q2 2026)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>UX Redesign Phase 1: In user testing (Phase 2 decision pending Phase 1 results)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>ASF Integration: Technical feasibility review in progress (decision expected Q2 2026)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Counterfeit Analysis: MVP Go Live (expected Q3 2026)</li>
           </ul>
 
-          <p class="font-syne font-bold text-ctext mb-4">Business Impact (2024 baseline)</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-4">Business Impact (2024 baseline)</p>
           <div class="grid grid-cols-2 gap-6 mb-8">
-            <div><div class="font-syne text-3xl font-bold text-accent">€1.4B</div><p class="font-dm text-sm text-secondary mt-1">in annual gross profit safeguarded</p></div>
-            <div><div class="font-syne text-3xl font-bold text-accent">€50–100M</div><p class="font-dm text-sm text-secondary mt-1">in brand value protected (avoiding legal cases)</p></div>
-            <div><div class="font-syne text-3xl font-bold text-accent">€1.56M</div><p class="font-dm text-sm text-secondary mt-1">in counterfeit products seized</p></div>
-            <div><div class="font-syne text-3xl font-bold text-accent">€2.8M+</div><p class="font-dm text-sm text-secondary mt-1">in claims prevented through early detection</p></div>
+            <div><div class="font-syne text-3xl font-bold text-ctext">€1.4B</div><p class="font-dm text-sm text-secondary mt-1">in annual gross profit safeguarded</p></div>
+            <div><div class="font-syne text-3xl font-bold text-ctext">€50–100M</div><p class="font-dm text-sm text-secondary mt-1">in brand value protected (avoiding legal cases)</p></div>
+            <div><div class="font-syne text-3xl font-bold text-ctext">€1.56M</div><p class="font-dm text-sm text-secondary mt-1">in counterfeit products seized</p></div>
+            <div><div class="font-syne text-3xl font-bold text-ctext">€2.8M+</div><p class="font-dm text-sm text-secondary mt-1">in claims prevented through early detection</p></div>
           </div>
 
-          <p class="font-syne font-bold text-ctext mb-3">Matrix Being Tracked</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Matrix Being Tracked</p>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-2"><strong>UX Redesign Impact:</strong></p>
           <ul class="space-y-2 mb-4">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>Scans per inspector per case: Baseline being established → target increase of 15-20% (simplified flow reduces friction)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Scans per inspector per case: Baseline being established → target increase of 15-20% (simplified flow reduces friction)</li>
           </ul>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-2"><strong>Detection Accuracy:</strong></p>
           <ul class="space-y-2 mb-4">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>Current state: Limited by 70% data gap</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>After Master Data integration: 50% improvement in detection accuracy</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>After ASF integration: 90% accuracy for labels with encryption (additional verification layer)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>Current state: Limited by 70% data gap</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>After Master Data integration: 50% improvement in detection accuracy</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>After ASF integration: 90% accuracy for labels with encryption (additional verification layer)</li>
           </ul>
           <p class="font-dm text-f-body text-dark leading-relaxed mb-2"><strong>Trade-off: Speed vs. Accuracy</strong></p>
           <ul class="space-y-2 mb-8">
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-secondary mt-2 flex-shrink-0"></span>ASF adds one additional scan step in the workflow (encryption verification)</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>This will slightly reduce total scans per case, but significantly improves accuracy</li>
-            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-accent mt-2 flex-shrink-0"></span>UX simplification counterbalances the extra step—streamlined flow keeps inspectors efficient</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>ASF adds one additional scan step in the workflow (encryption verification)</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>This will slightly reduce total scans per case, but significantly improves accuracy</li>
+            <li class="flex items-start gap-3 font-dm text-f-body text-dark leading-relaxed"><span class="w-2 h-2 rounded-full bg-ctext mt-2 flex-shrink-0"></span>UX simplification counterbalances the extra step—streamlined flow keeps inspectors efficient</li>
           </ul>
 
-          <p class="font-syne font-bold text-ctext mb-3">Timeline</p>
+          <p class="font-syne font-bold text-ctext text-f-title2 mb-3">Timeline</p>
           <ul class="space-y-3 font-dm text-f-body text-dark">
-            <li class="flex items-start gap-4"><span class="text-accent font-semibold min-w-[100px]">Q2 2026</span>Master Data integration ships + Phase 1 UX results validated (50% detection improvement)</li>
+            <li class="flex items-start gap-4"><span class="font-bold text-ctext min-w-[100px]">Q2 2026</span>Master Data integration ships + Phase 1 UX results validated (50% detection improvement)</li>
             <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q2/Q3 2026</span>ASF technical feasibility decision → integration roadmap</li>
             <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q3 2026</span>Counterfeit Analysis MVP Go Live</li>
             <li class="flex items-start gap-4"><span class="text-secondary font-medium min-w-[100px]">Q1 2027</span>ASF integration deployment (targeting 90% accuracy for encrypted labels)</li>
