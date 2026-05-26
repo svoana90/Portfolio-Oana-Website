@@ -108,22 +108,22 @@
     .btn-metal {
       position: relative; display: inline-flex; align-items: center;
       justify-content: center; gap: 6px; cursor: pointer; border: none;
-      border-radius: 9px; padding: 1.5px; text-decoration: none;
+      border-radius: 30px; padding: 1.5px; text-decoration: none;
       background: linear-gradient(180deg, #1a1a1a 0%, #7a7a7a 100%);
       box-shadow: 0 2px 8px rgba(0,0,0,.28), 0 1px 2px rgba(0,0,0,.2);
-      transition: transform 200ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 200ms;
+      transition: transform 200ms cubic-bezier(0.1,0.4,0.2,1), box-shadow 200ms, background 200ms;
       font-family: 'DM Sans', sans-serif;
     }
     .btn-metal-face {
       display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-      padding: 9px 22px; border-radius: 8px;
+      padding: 9px 22px; border-radius: 28px;
       background: linear-gradient(180deg, #383838 0%, #141414 100%);
       color: #fff; font-size: 14px; font-weight: 500;
       text-shadow: 0 1px 2px rgba(0,0,0,.5); white-space: nowrap;
       transition: background 200ms;
     }
-    .btn-metal:hover { background: linear-gradient(180deg, #4a4a4a 0%, #000 100%); box-shadow: 0 4px 16px rgba(0,0,0,.32); }
-    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #3a3a3a 0%, #0a0a0a 100%); }
+    .btn-metal:hover { background: #FF2D78; box-shadow: 0 4px 16px rgba(255,45,120,.35); }
+    .btn-metal:hover .btn-metal-face { background: linear-gradient(180deg, #3a3a3a 0%, #141414 100%); }
     .btn-metal:active { transform: translateY(2px) scale(.98); box-shadow: 0 1px 4px rgba(0,0,0,.25); }
     .btn-metal:focus-visible { outline: 2px solid #262626; outline-offset: 3px; }
 
@@ -138,7 +138,7 @@
 
     /* ── Top-bar links ── */
     .tlink {
-      font-family: 'DM Sans', sans-serif; font-size: 22px; color: #262626;
+      font-family: 'DM Sans', sans-serif; font-size: 16px; color: #262626;
       text-decoration: none; border-bottom: 1px solid transparent;
       transition: border-color .2s; padding-bottom: 1px;
     }
@@ -208,6 +208,33 @@
     }
     .pinput::placeholder { color: #9b9ba0; }
     .pinput:focus { border-color: #262626; box-shadow: 0 0 0 3px rgba(38,38,38,.1); }
+
+    /* ── Lightbox ── */
+    .lightbox-trigger { cursor: zoom-in; }
+    .lightbox-trigger:hover { opacity: .9; }
+    #lightbox-overlay {
+      position: fixed; inset: 0; z-index: 500;
+      background: rgba(0,0,0,.82);
+      display: none; align-items: center; justify-content: center;
+      padding: 24px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+    }
+    #lightbox-overlay.open { display: flex; }
+    #lightbox-img {
+      max-width: 92vw; max-height: 90vh;
+      object-fit: contain; border-radius: 12px;
+      box-shadow: 0 24px 80px rgba(0,0,0,.6);
+      animation: fadeUp .25s cubic-bezier(0.22,1,0.36,1) both;
+    }
+    #lightbox-close {
+      position: absolute; top: 18px; right: 22px;
+      background: rgba(255,255,255,.15); border: none; color: #fff;
+      width: 40px; height: 40px; border-radius: 50%; font-size: 22px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    #lightbox-close:hover { background: rgba(255,255,255,.28); }
 
     /* ── Scroll-to-top ── */
     .stt {
@@ -388,12 +415,12 @@
         <p class="slabel mb-1">Experiments (Field Reports)</p>
         <h2 class="font-syne text-2xl font-bold text-ctext">Not Yet</h2>
       </div>
-      <div class="grid grid-cols-1 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div class="card p-8 exp-card" onclick="navigate('not-yet-01')" role="button" tabindex="0"
              onkeydown="if(event.key==='Enter')navigate('not-yet-01')">
           <p class="slabel mb-4">Field Report #001</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I built an <span class="font-semibold">AI Agent</span> to check labelling compliance at work
+            I built an <span class="font-semibold" style="color:#FF2D78;">AI Agent</span> to check labelling compliance at work
           </h3>
           <p class="font-dm text-f-body text-dark leading-relaxed">
             Reads emails, analyses designs, identifies issues, drafts responses.
@@ -403,7 +430,7 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-02')">
           <p class="slabel mb-4">Field Report #002</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            I track my spending <span class="font-semibold">with AI</span>
+            I track my spending <span class="font-semibold" style="color:#FF2D78;">with AI</span>
           </h3>
           <p class="font-dm text-f-body text-dark leading-relaxed">
             Upload bill photos, get categorised expenses, savings rate, and spending advice—no manual data entry required
@@ -413,7 +440,7 @@
              onkeydown="if(event.key==='Enter')navigate('not-yet-03')">
           <p class="slabel mb-4">Field Report #003</p>
           <h3 class="font-syne text-2xl font-bold text-ctext leading-tight mb-4">
-            300 photos. One supplier code. <span class="font-semibold">Two AI</span> tools
+            300 photos. One supplier code. <span class="font-semibold" style="color:#FF2D78;">Two AI</span> tools
           </h3>
           <p class="font-dm text-f-body text-dark leading-relaxed">
             Fast identification, but manual batching and file management ate the time savings. Learned: AI tools need folder access to truly scale.
@@ -469,8 +496,8 @@
 
   <footer class="mt-4 bg-secondary px-6 md:px-14 lg:px-20 py-7">
     <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
-      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
-      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">LinkedIn</a>
     </div>
   </footer>
 </div>
@@ -532,8 +559,8 @@
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
     <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
-      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
-      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">LinkedIn</a>
     </div>
   </footer>
 </div>
@@ -605,8 +632,8 @@
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
     <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
-      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
-      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">LinkedIn</a>
     </div>
   </footer>
 </div>
@@ -699,8 +726,8 @@
   </main>
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
     <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
-      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
-      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">LinkedIn</a>
     </div>
   </footer>
 </div>
@@ -974,8 +1001,8 @@
 
   <footer class="bg-secondary px-6 md:px-14 lg:px-20 py-7">
     <div class="max-w-screen-xl mx-auto flex items-center justify-end gap-6">
-      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">e-mail</a>
-      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:18px;">LinkedIn</a>
+      <a href="mailto:svoana@yahoo.com" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">e-mail</a>
+      <a href="https://www.linkedin.com/in/svoana" target="_blank" rel="noopener noreferrer" class="font-dm text-white/80 hover:text-white transition-colors" style="font-size:16px;">LinkedIn</a>
     </div>
   </footer>
 </div>
@@ -1254,8 +1281,8 @@
             </div>
           </div>
           <div class="flex flex-col gap-6 mt-7">
-            <img src="imgs/case-scan-1.png" alt="Case and Scan 1" class="section-img">
-            <img src="imgs/case-scan-3.png" alt="Case and Scan 3" class="section-img">
+            <img src="imgs/case-scan-1.png" alt="Case and Scan 1" class="section-img lightbox-trigger" onclick="openLightbox(this)">
+            <img src="imgs/case-scan-3.png" alt="Case and Scan 3" class="section-img lightbox-trigger" onclick="openLightbox(this)">
           </div>
         </section>
 
@@ -1349,6 +1376,15 @@
       </div>
     </footer>
   </div>
+</div>
+
+<!-- ══════════════════════════════════════════════ -->
+<!-- LIGHTBOX -->
+<!-- ══════════════════════════════════════════════ -->
+<div id="lightbox-overlay" role="dialog" aria-modal="true" aria-label="Image preview"
+     onclick="closeLightbox(event)">
+  <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close">✕</button>
+  <img id="lightbox-img" src="" alt="">
 </div>
 
 <!-- ══════════════════════════════════════════════ -->
@@ -1457,6 +1493,24 @@
   window.addEventListener('popstate', e => {
     const page = (e.state && e.state.page) ? e.state.page : 'home';
     navigate(page);
+  });
+
+  // Lightbox
+  function openLightbox(img) {
+    const overlay = document.getElementById('lightbox-overlay');
+    const lbImg   = document.getElementById('lightbox-img');
+    lbImg.src = img.src;
+    lbImg.alt = img.alt;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(e) {
+    if (e && e.target === document.getElementById('lightbox-img')) return; // clicking the image itself keeps it open
+    document.getElementById('lightbox-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
   });
 
   // Init
