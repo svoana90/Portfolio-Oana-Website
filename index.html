@@ -53,10 +53,10 @@
     .page { display: none; min-height: 100vh; }
     .page.active { display: block; }
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(28px) scale(0.97); filter: blur(3px); }
+      to   { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
     }
-    .page.active { animation: fadeUp .4s cubic-bezier(0.22,1,0.36,1) both; }
+    .page.active { animation: fadeUp 0.65s cubic-bezier(0.32,0.72,0,1) both; }
 
     /* ── Floating nav (liquid glass) ── */
     .fnav {
@@ -294,6 +294,49 @@
     @media (max-width: 640px) {
       .fnav { width: calc(100% - 24px); justify-content: center; top: 12px; }
       .fnav-item { padding: 6px 10px; font-size: 12px; }
+    }
+
+    /* ── Scroll reveal (iOS spring) ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(52px) scale(0.95);
+      transition: opacity 0.8s cubic-bezier(0.32,0.72,0,1),
+                  transform 0.8s cubic-bezier(0.32,0.72,0,1);
+      will-change: opacity, transform;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0) scale(1); }
+    .reveal-d1 { transition-delay: 0.10s; }
+    .reveal-d2 { transition-delay: 0.20s; }
+    .reveal-d3 { transition-delay: 0.30s; }
+    .reveal-d4 { transition-delay: 0.40s; }
+
+    /* Restore snappy hover on experiment cards after reveal finishes */
+    .exp-card.reveal.visible {
+      transition: transform 0.4s cubic-bezier(0.22,1,0.36,1),
+                  box-shadow 0.4s cubic-bezier(0.22,1,0.36,1);
+    }
+
+    /* ── Divider wipe left → right ── */
+    .reveal-line {
+      transform-origin: left center;
+      transform: scaleX(0);
+      transition: transform 1s cubic-bezier(0.32,0.72,0,1);
+    }
+    .reveal-line.visible { transform: scaleX(1); }
+
+    /* ── Floating nav entrance ── */
+    @keyframes navIn {
+      from { opacity: 0; transform: translateX(-50%) translateY(-22px) scale(0.88); }
+      to   { opacity: 1; transform: translateX(-50%) translateY(0) scale(1); }
+    }
+    .fnav { animation: navIn 1s cubic-bezier(0.32,0.72,0,1) both 0.1s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal, .reveal.visible { opacity: 1; transform: none; transition: none; }
+      .reveal-line, .reveal-line.visible { transform: none; transition: none; }
+      .exp-card.reveal.visible { transition: transform 0.4s, box-shadow 0.4s; }
+      .page.active { animation: none; }
+      .fnav { animation: none; }
     }
   </style>
 </head>
@@ -1405,6 +1448,7 @@
     if (!target) return;
     target.classList.add('active');
     window.scrollTo({ top: 0, behavior: 'instant' });
+    setTimeout(() => activateReveals(target), 50);
 
     if (id === 'protected-case-study') {
       const gate = document.getElementById('pgate');
@@ -1453,6 +1497,7 @@
       document.getElementById('pgate').style.display = 'none';
       document.getElementById('prot-content').classList.remove('hidden');
       err.classList.add('hidden');
+      activateReveals(document.getElementById('prot-content'));
     } else {
       err.classList.remove('hidden');
       document.getElementById('pinput').value = '';
@@ -1514,12 +1559,88 @@
     if (e.key === 'Escape') closeLightbox();
   });
 
+  // ── Reveal system ──
+  const revealIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        revealIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -30px 0px' });
+
+  function activateReveals(page) {
+    page.querySelectorAll('.reveal, .reveal-line').forEach(el => el.classList.remove('visible'));
+    requestAnimationFrame(() => {
+      page.querySelectorAll('.reveal, .reveal-line').forEach(el => revealIO.observe(el));
+    });
+  }
+
+  (function setupReveals() {
+    function r(el, ...cls) {
+      if (!el) return;
+      el.classList.add('reveal', ...cls.filter(Boolean));
+    }
+
+    // Home page
+    const home = document.getElementById('page-home');
+    if (home) {
+      // Hero: stagger h1, p, badge
+      const hero = home.querySelector('main > section:first-child');
+      if (hero) {
+        r(hero.querySelector('h1'));
+        r(hero.querySelector('p'), 'reveal-d1');
+        r(hero.querySelector('.mt-8'), 'reveal-d2');
+      }
+
+      // Dividers wipe in
+      home.querySelectorAll('.divider').forEach(el => el.classList.add('reveal-line'));
+
+      // Work section
+      r(home.querySelector('#home-work > .mb-7'));
+      r(home.querySelector('#home-work > .card'), 'reveal-d1');
+
+      // Experiments section — stagger all three cards
+      r(home.querySelector('#home-notyet > .mb-7'));
+      home.querySelectorAll('#home-notyet .exp-card').forEach((el, i) => {
+        r(el, i === 1 ? 'reveal-d1' : i === 2 ? 'reveal-d2' : null);
+      });
+
+      // About section
+      r(home.querySelector('#about > .mb-7'));
+      r(home.querySelector('#about > .card'), 'reveal-d1');
+    }
+
+    // Field report pages — ny-card + navigation links
+    document.querySelectorAll('.ny-card').forEach(el => r(el));
+    document.querySelectorAll('.ny-nav').forEach((el, i) => r(el, i === 1 ? 'reveal-d1' : null));
+
+    // Case study pages — each section + callouts
+    document.querySelectorAll(
+      '#page-public-case-study section, #page-protected-case-study section'
+    ).forEach(el => r(el));
+    document.querySelectorAll(
+      '#page-public-case-study .callout, #page-protected-case-study .callout'
+    ).forEach(el => {
+      if (!el.closest('section')) r(el);
+    });
+
+    // Protected case study: stat grid items stagger
+    document.querySelectorAll('#prot-measurements .grid > div').forEach((el, i) => {
+      r(el, i > 0 ? 'reveal-d' + Math.min(i, 4) : null);
+    });
+  })();
+
   // Init
   const hash = location.hash.slice(1);
   if (hash && PAGES.includes(hash)) {
     navigate(hash);
   } else {
     history.replaceState({ page: 'home' }, '', '#home');
+    setTimeout(() => {
+      const activePage = document.querySelector('.page.active');
+      if (activePage) activateReveals(activePage);
+    }, 80);
   }
 </script>
 </body>
